@@ -12,7 +12,7 @@ struct ContentView: View {
         VStack {
             Spacer()
             Button(action: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/{}/*@END_MENU_TOKEN@*/) {
-                Text("習慣追加ボタン")
+                Text("習慣追加ボタンだよ")
             }
             Spacer()
         
