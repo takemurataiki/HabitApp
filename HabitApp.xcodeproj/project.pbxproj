@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		239318F025C372B400C3796B /* HabitEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239318EF25C372B400C3796B /* HabitEditView.swift */; };
 		239318F325C3A56500C3796B /* HabitRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239318F225C3A56500C3796B /* HabitRecordView.swift */; };
+		239318F625C3C10300C3796B /* ListData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239318F525C3C10300C3796B /* ListData.swift */; };
+		239318F925C3C90100C3796B /* ListDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239318F825C3C90100C3796B /* ListDataView.swift */; };
 		23F8833925C048AB00FC73C2 /* HabitAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F8833825C048AB00FC73C2 /* HabitAppApp.swift */; };
 		23F8833B25C048AB00FC73C2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F8833A25C048AB00FC73C2 /* ContentView.swift */; };
 		23F8833D25C048AB00FC73C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23F8833C25C048AB00FC73C2 /* Assets.xcassets */; };
@@ -18,6 +20,8 @@
 /* Begin PBXFileReference section */
 		239318EF25C372B400C3796B /* HabitEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditView.swift; sourceTree = "<group>"; };
 		239318F225C3A56500C3796B /* HabitRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitRecordView.swift; sourceTree = "<group>"; };
+		239318F525C3C10300C3796B /* ListData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListData.swift; sourceTree = "<group>"; };
+		239318F825C3C90100C3796B /* ListDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataView.swift; sourceTree = "<group>"; };
 		23F8833525C048AB00FC73C2 /* HabitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23F8833825C048AB00FC73C2 /* HabitAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitAppApp.swift; sourceTree = "<group>"; };
 		23F8833A25C048AB00FC73C2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,6 +44,7 @@
 		237D353C25C2956C00064EA7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				239318F525C3C10300C3796B /* ListData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -57,6 +62,7 @@
 		237D353E25C2959200064EA7 /* Veiw Model */ = {
 			isa = PBXGroup;
 			children = (
+				239318F825C3C90100C3796B /* ListDataView.swift */,
 			);
 			path = "Veiw Model";
 			sourceTree = "<group>";
@@ -168,10 +174,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				239318F925C3C90100C3796B /* ListDataView.swift in Sources */,
 				23F8833B25C048AB00FC73C2 /* ContentView.swift in Sources */,
 				239318F025C372B400C3796B /* HabitEditView.swift in Sources */,
 				239318F325C3A56500C3796B /* HabitRecordView.swift in Sources */,
 				23F8833925C048AB00FC73C2 /* HabitAppApp.swift in Sources */,
+				239318F625C3C10300C3796B /* ListData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

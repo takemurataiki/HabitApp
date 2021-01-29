@@ -10,22 +10,26 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            VStack {
+            VStack(alignment: .center) {
                 NavigationLink(destination: HabitEditView()){
                     Text("習慣追加ボタン")
                     
                 }.padding(.all).border(Color.black)
                 
                 
-            
-                NavigationLink(destination: HabitRecordView()){
-                    Text("習慣記録ボタン")
+                List(listArray) { item in
+                    NavigationLink(destination: HabitRecordView()){
+                        ListDataView(list: item)
+                    
+                }
                     
                 }.padding(.all).border(Color.black)
-                
-            }.navigationTitle("ContentView")
+            }
+            .navigationTitle("ContentView")
+            .navigationBarTitleDisplayMode(.inline)
             
         }
+        
         
     }
 }
