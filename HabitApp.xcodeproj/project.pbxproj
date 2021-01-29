@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		239318F025C372B400C3796B /* HabitEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239318EF25C372B400C3796B /* HabitEditView.swift */; };
+		239318F325C3A56500C3796B /* HabitRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239318F225C3A56500C3796B /* HabitRecordView.swift */; };
 		23F8833925C048AB00FC73C2 /* HabitAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F8833825C048AB00FC73C2 /* HabitAppApp.swift */; };
 		23F8833B25C048AB00FC73C2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F8833A25C048AB00FC73C2 /* ContentView.swift */; };
 		23F8833D25C048AB00FC73C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23F8833C25C048AB00FC73C2 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		239318EF25C372B400C3796B /* HabitEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditView.swift; sourceTree = "<group>"; };
+		239318F225C3A56500C3796B /* HabitRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitRecordView.swift; sourceTree = "<group>"; };
 		23F8833525C048AB00FC73C2 /* HabitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23F8833825C048AB00FC73C2 /* HabitAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitAppApp.swift; sourceTree = "<group>"; };
 		23F8833A25C048AB00FC73C2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -47,6 +49,7 @@
 			children = (
 				23F8833A25C048AB00FC73C2 /* ContentView.swift */,
 				239318EF25C372B400C3796B /* HabitEditView.swift */,
+				239318F225C3A56500C3796B /* HabitRecordView.swift */,
 			);
 			path = Veiw;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 			files = (
 				23F8833B25C048AB00FC73C2 /* ContentView.swift in Sources */,
 				239318F025C372B400C3796B /* HabitEditView.swift in Sources */,
+				239318F325C3A56500C3796B /* HabitRecordView.swift in Sources */,
 				23F8833925C048AB00FC73C2 /* HabitAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

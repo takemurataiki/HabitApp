@@ -16,6 +16,10 @@ struct HabitEditView: View {
                 .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                 .frame(width: 250.0)
                 .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+            TextField("補足メモ", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
+                .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                .frame(width: 250.0, height: 250.0)
+                .border(Color.black)
             
             
         
