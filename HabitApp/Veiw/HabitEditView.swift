@@ -8,19 +8,29 @@
 import SwiftUI
 
 struct HabitEditView: View {
+    @State var messages: [String] = []
+    @State var subMessages: [String] = []
+    @State var newMessage = ""
+    
     var body: some View {
         NavigationView {
             VStack {
                 Text("何を習慣にしたいですか？")
-                    .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                TextField("習慣を入れてください", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+                TextField("習慣を入れてください", text: $newMessage)
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     .frame(width: 250.0)
-                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/)
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
                 TextField("補足メモ", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                    .frame(width: 250.0, height: 250.0)
+                    .frame(width: 250.0, height: 100.0)
                     .border(Color.black)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                
+                    
                 
                 
             
