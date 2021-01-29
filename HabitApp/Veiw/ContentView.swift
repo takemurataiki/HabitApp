@@ -9,19 +9,24 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Spacer()
-            Button(action: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/{}/*@END_MENU_TOKEN@*/) {
-                Text("習慣追加ボタン")
-            }
-            Spacer()
-        
-            Button(action: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/{}/*@END_MENU_TOKEN@*/) {
-                Text("習慣一覧ボタン")
-            }
-            Spacer()
-        }
+        NavigationView {
+            VStack {
+                NavigationLink(destination: HabitEditView()){
+                    Text("習慣追加ボタン")
+                    
+                }.padding(.all).border(Color.black)
+                
+                
             
+                NavigationLink(destination: HabitRecordView()){
+                    Text("習慣記録ボタン")
+                    
+                }.padding(.all).border(Color.black)
+                
+            }.navigationTitle("ContentView")
+            
+        }
+        
     }
 }
 
