@@ -26,3 +26,13 @@ func makeData() -> [ListData] {
     
     return dataArray
 }
+
+
+class NewList: ObservableObject {
+    @Published var messages: [String] = []
+    @Published var subMessages: [String] = []
+    @Published var newMessage = ""
+    
+}
+
+

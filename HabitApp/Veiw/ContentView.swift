@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ObservedObject var newList = NewList()
+    
     var body: some View {
+        
         NavigationView {
             VStack(alignment: .center) {
                 NavigationLink(destination: HabitEditView()){
@@ -16,14 +20,13 @@ struct ContentView: View {
                     
                 }.padding(.all).border(Color.black)
                 
-                
-                List(listArray) { item in
-                    NavigationLink(destination: HabitRecordView()){
-                        ListDataView(list: item)
-                    
+                List {
+                    ForEach(newList.messages, id: \.self) { user in
+                        Text(user)
+                    }.onDelete { offset in
+                        self.newList.messages.remove(atOffsets: offset)
+                    }
                 }
-                    
-                }.padding(.all).border(Color.black)
             }
             .navigationTitle("ContentView")
             .navigationBarTitleDisplayMode(.inline)

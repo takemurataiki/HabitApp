@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct HabitEditView: View {
-    @State var messages: [String] = []
-    @State var subMessages: [String] = []
-    @State var newMessage = ""
+    
+    @ObservedObject var newList = NewList()
     
     var body: some View {
         NavigationView {
@@ -18,7 +17,8 @@ struct HabitEditView: View {
                 Text("何を習慣にしたいですか？")
                     .font(.footnote)
                     .foregroundColor(.gray)
-                TextField("習慣を入れてください", text: $newMessage)
+                    
+                TextField("習慣を入れてください", text: $newList.newMessage)
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     .frame(width: 250.0)
                     .font(.footnote)
@@ -34,12 +34,28 @@ struct HabitEditView: View {
                 
                 
             
-                Button(action: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/{}/*@END_MENU_TOKEN@*/) {
+                Button(action: {
+                    self.newList.messages.append(self.newList.newMessage)
+                    self.newList.newMessage = ""
+                    
+                }) {
+                    
                     Text("完了ボタン")
+                    
+                    
+                }
+                
+                List {
+                    ForEach(newList.messages, id: \.self) { user in
+                        Text(user)
+                    }.onDelete { offset in
+                        self.newList.messages.remove(atOffsets: offset)
+                    }
                 }
             }.navigationTitle("HabitEditView")
             
         }
+        
         
     }
 }
