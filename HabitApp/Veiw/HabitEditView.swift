@@ -38,16 +38,19 @@ struct HabitEditView: View {
                     self.newList.messages.append(self.newList.newMessage)
                     self.newList.newMessage = ""
                     
-                }) {
                     
+                }) {
                     Text("完了ボタン")
+                    NavigationLink(destination: ContentView()){
+                        Text("習慣追加ボタン")
+                    }.padding(.all).border(Color.black)
                     
                     
                 }
                 
                 List {
-                    ForEach(newList.messages, id: \.self) { user in
-                        Text(user)
+                    ForEach(newList.messages, id: \.self) { habit in
+                        Text(habit)
                     }.onDelete { offset in
                         self.newList.messages.remove(atOffsets: offset)
                     }

@@ -13,6 +13,8 @@ struct HabitRecordView: View {
     var body: some View {
         NavigationView {
             VStack {
+                Text("習慣名")
+                Spacer()
                 HStack {
                     Button(action: {
                             num += 1}) {
@@ -25,6 +27,7 @@ struct HabitRecordView: View {
                     
                 }
                 Text("\(num)")
+                Spacer()
             }.navigationTitle("HabitRecordView")
         }
     }

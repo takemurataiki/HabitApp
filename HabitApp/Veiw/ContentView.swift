@@ -17,12 +17,11 @@ struct ContentView: View {
             VStack(alignment: .center) {
                 NavigationLink(destination: HabitEditView()){
                     Text("習慣追加ボタン")
-                    
                 }.padding(.all).border(Color.black)
                 
                 List {
-                    ForEach(newList.messages, id: \.self) { user in
-                        Text(user)
+                    ForEach(newList.messages, id: \.self) { habit in
+                        Text(habit)
                     }.onDelete { offset in
                         self.newList.messages.remove(atOffsets: offset)
                     }
