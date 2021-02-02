@@ -17,22 +17,37 @@ struct ContentView: View {
             
             VStack(alignment: .center) {
                 
-                NavigationLink(destination: HabitEditView()){
-                    Text("習慣追加ボタン")
-                }.padding(.all).border(Color.black)
+                HStack {
+                    
+                    EditButton()
+                        .padding()
+                    
+                    NavigationLink(destination: HabitEditView()){
+                        Text("習慣追加ボタン")
+                        
+                    }.padding(.all).border(Color.black)
+                    
+                }
                 
                 List {
                     ForEach(newList.messages, id: \.self) { habitData in
-                        Text(habitData)
+                        NavigationLink(destination: HabitRecordView(habitName: habitData)) {
+                            Text(habitData)
+                        }
                     }.onDelete { offset in
                         self.newList.messages.remove(atOffsets: offset)
                     }
+                    
                 }
+                
             }
             .navigationTitle("ContentView")
             .navigationBarTitleDisplayMode(.inline)
             
         }
+        .padding()
+        
+        
         
         
     }

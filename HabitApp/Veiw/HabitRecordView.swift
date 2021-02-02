@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct HabitRecordView: View {
+    var habitName: String = "習慣リスト"
+    
     @State var num = 0
     
     var body: some View {
         NavigationView {
             VStack {
-                Text("習慣名")
+                Text(habitName)
                 Spacer()
                 HStack {
                     Button(action: {
