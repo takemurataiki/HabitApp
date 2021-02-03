@@ -10,26 +10,38 @@ import SwiftUI
 struct HabitRecordView: View {
     var habitName: String = "習慣リスト"
     
-    @State var num = 0
+    
+    @ObservedObject var countHabit = CountHabit()
     
     var body: some View {
         NavigationView {
             VStack {
                 Text(habitName)
                 Spacer()
-                HStack {
-                    Button(action: {
-                            num += 1}) {
-                        Text("習慣達成！")
-                    }
-                    Button(action: {
-                            num -= 1}) {
-                        Text("習慣取消し！")
-                    }
-                    
-                }
-                Text("\(num)")
+                
+                Text("\(self.countHabit.counter)")
+                
                 Spacer()
+                
+                
+                Button(action:
+                        {countHabit.countUp()
+                            
+                        }) {
+                    Text("習慣追加ボタン")
+                }.disabled(countHabit.counter >= 30)
+                
+                Button(action:
+                        {countHabit.countDown()
+                        
+                        }) {
+                    Text("習慣取消しボタン")
+                }.disabled(countHabit.counter <= 0)
+                
+                
+                
+                Spacer()
+                
             }.navigationTitle("HabitRecordView")
         }
     }

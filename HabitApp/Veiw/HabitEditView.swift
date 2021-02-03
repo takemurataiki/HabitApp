@@ -43,21 +43,21 @@ struct HabitEditView: View {
                     
                 }
                 
-                    NavigationLink(destination: ContentView(newList: newList),isActive: $flug) {
-                        
-                    }
+                NavigationLink(destination: ContentView(newList: newList),isActive: $flug) {
                     
-                    Button("ボタン",action: {
-                        newList.messages.append(newList.newMessage)
-                        newList.newMessage = ""
-                        self.flug = true    
-                        
-                        
-                    })
-                    .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                    .border(Color.black)
+                }
+                
+                Button("ボタン",action: {
+                    newList.messages.append(newList.newMessage)
+                    newList.newMessage = ""
+                    self.flug = true
                     
                     
+                })
+                .padding(.all)
+                .border(Color.black)
+                
+                
                 
                 
                 

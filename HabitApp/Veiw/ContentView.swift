@@ -10,6 +10,11 @@ import SwiftUI
 struct ContentView: View {
     
     @ObservedObject var newList = NewList()
+    @ObservedObject var countHabit = CountHabit()
+    
+    
+    
+    
     
     var body: some View {
         
@@ -33,6 +38,9 @@ struct ContentView: View {
                     ForEach(newList.messages, id: \.self) { habitData in
                         NavigationLink(destination: HabitRecordView(habitName: habitData)) {
                             Text(habitData)
+                            Text("\(countHabit.counter)/30").border(Color.black)
+                            
+    
                         }
                     }.onDelete { offset in
                         self.newList.messages.remove(atOffsets: offset)
