@@ -12,7 +12,7 @@ struct HabitEditView: View {
     @Environment(\.presentationMode) var presentation
     
 //    @ObservedObject var newList = NewList()
-//    @ObservedObject var countHabit: CountHabit
+//    @ObservedObject var countHabit: CountHabit()
     
     
     @EnvironmentObject var newList: NewList
@@ -53,7 +53,7 @@ struct HabitEditView: View {
                         
                     }
                     
-                        NavigationLink(destination: ContentView(newList: newList),isActive: $isShow) {
+                NavigationLink(destination: ContentView(newList: _newList),isActive: $isShow) {
                             
                         }
                         

@@ -9,10 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @ObservedObject var newList = NewList()
+//    @ObservedObject var newList = NewList()
 //    @ObservedObject var countHabit = CountHabit()
     
-//    @EnvironmentObject var newList: NewList
+    @EnvironmentObject var newList: NewList
     @EnvironmentObject var countHabit: CountHabit
     
     

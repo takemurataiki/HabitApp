@@ -60,5 +60,7 @@ struct HabitRecordView_Previews: PreviewProvider {
     static var previews: some View {
         HabitRecordView()
             .environmentObject(CountHabit())
+            .environmentObject(NewList())
+            
     }
 }
