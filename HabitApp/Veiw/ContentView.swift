@@ -10,16 +10,14 @@ import SwiftUI
 struct ContentView: View {
     
     @ObservedObject var newList = NewList()
-    @ObservedObject var countHabit = CountHabit()
+//    @ObservedObject var countHabit = CountHabit()
     
-    
-    
+//    @EnvironmentObject var newList: NewList
+    @EnvironmentObject var countHabit: CountHabit
     
     
     var body: some View {
-        
         NavigationView {
-            
             VStack(alignment: .center) {
                 
                 HStack {
@@ -53,10 +51,6 @@ struct ContentView: View {
             .navigationBarTitleDisplayMode(.inline)
             
         }
-        .padding()
-        
-        
-        
         
     }
 }
@@ -64,5 +58,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(NewList())
+            .environmentObject(CountHabit())
     }
 }

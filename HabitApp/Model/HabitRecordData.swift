@@ -11,6 +11,7 @@ import Foundation
 class CountHabit: ObservableObject {
     
     @Published var counter = 0
+    @Published var isShow: Bool = false
     
     
     func countUp() {

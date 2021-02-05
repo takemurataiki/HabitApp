@@ -9,70 +9,74 @@ import SwiftUI
 
 struct HabitEditView: View {
     
-    @ObservedObject var newList = NewList()
+    @Environment(\.presentationMode) var presentation
     
-    @State var flug: Bool = false
+//    @ObservedObject var newList = NewList()
+//    @ObservedObject var countHabit: CountHabit
+    
+    
+    @EnvironmentObject var newList: NewList
+    @EnvironmentObject var countHabit: CountHabit
+    
+    @State var isShow: Bool = false
     
     var body: some View {
+        
         NavigationView {
             VStack {
-                
-                Text("何を習慣にしたいですか？")
-                    .font(.footnote)
-                    .foregroundColor(.gray)
-                
-                TextField("習慣を入れてください", text: $newList.newMessage)
+
                     
-                    .frame(width: 250.0)
-                    .font(.footnote)
-                    .foregroundColor(.gray)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                
-                TextField("補足メモ", text: .constant(""))
-                    .frame(width: 250.0, height: 100.0)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                
-                List {
-                    ForEach(newList.messages, id: \.self) { habitData in
-                        NavigationLink(destination: HabitRecordView(habitName: habitData)) {
-                            Text(habitData)
+                    Text("何を習慣にしたいですか？")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                    
+                    TextField("習慣を入れてください", text: $newList.newMessage)
+                        
+                        .frame(width: 250.0)
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+                    TextField("補足メモ", text: .constant(""))
+                        .frame(width: 250.0, height: 100.0)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+                    List {
+                        ForEach(newList.messages, id: \.self) { habitData in
+                            NavigationLink(destination: HabitRecordView(habitName: habitData)) {
+                                Text(habitData)
+                                Text("\(countHabit.counter)/30").border(Color.black)
+                            }
+                        }.onDelete { offset in
+                            self.newList.messages.remove(atOffsets: offset)
                         }
-                    }.onDelete { offset in
-                        self.newList.messages.remove(atOffsets: offset)
+                        
                     }
                     
-                }
-                
-                NavigationLink(destination: ContentView(newList: newList),isActive: $flug) {
+                        NavigationLink(destination: ContentView(newList: newList),isActive: $isShow) {
+                            
+                        }
+                        
+                        Button("ボタン",action: {
+                            newList.messages.append(newList.newMessage)
+                            newList.newMessage = ""
+                            self.isShow = true
+                            presentation.wrappedValue.dismiss()
+                            
+                        })
+                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                        .border(Color.black)
                     
-                }
-                
-                Button("ボタン",action: {
-                    newList.messages.append(newList.newMessage)
-                    newList.newMessage = ""
-                    self.flug = true
-                    
-                    
-                })
-                .padding(.all)
-                .border(Color.black)
-                
-                
-                
-                
-                
-                
-                
             }.navigationTitle("HabitEditView")
-            
+            .navigationBarTitleDisplayMode(.inline)
         }
-        
-        
     }
 }
 
 struct HabitEditView_Previews: PreviewProvider {
     static var previews: some View {
         HabitEditView()
+            .environmentObject(NewList())
+            .environmentObject(CountHabit())
     }
 }

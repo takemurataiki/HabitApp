@@ -33,6 +33,8 @@ class NewList: ObservableObject {
     @Published var subMessages: [String] = []
     @Published var newMessage = ""
     
+    @Published var isShow: Bool = false
+    
     
     
 }
