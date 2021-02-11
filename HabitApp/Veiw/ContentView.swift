@@ -19,12 +19,9 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .center) {
-                
                 HStack {
-                    
                     EditButton()
                         .padding()
-                    
                     NavigationLink(destination: HabitEditView()){
                         Text("習慣追加ボタン")
                         
@@ -33,15 +30,13 @@ struct ContentView: View {
                 }
                 
                 List {
-                    ForEach(newList.messages, id: \.self) { habitData in
+                    ForEach(newList.titles, id: \.self) { habitData in
                         NavigationLink(destination: HabitRecordView(habitName: habitData)) {
                             Text(habitData)
                             Text("\(countHabit.counter)/30").border(Color.black)
-                            
-    
                         }
                     }.onDelete { offset in
-                        self.newList.messages.remove(atOffsets: offset)
+                        self.newList.titles.remove(atOffsets: offset)
                     }
                     
                 }

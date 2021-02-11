@@ -29,9 +29,9 @@ func makeData() -> [ListData] {
 
 
 class NewList: ObservableObject {
-    @Published var messages: [String] = []
-    @Published var subMessages: [String] = []
-    @Published var newMessage = ""
+    @Published var titles: [String] = []
+    @Published var subTitles: [String] = []
+    @Published var newTitle = ""
     
     @Published var isShow: Bool = false
     

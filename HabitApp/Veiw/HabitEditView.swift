@@ -30,7 +30,7 @@ struct HabitEditView: View {
                         .font(.footnote)
                         .foregroundColor(.gray)
                     
-                    TextField("習慣を入れてください", text: $newList.newMessage)
+                    TextField("習慣を入れてください", text: $newList.newTitle)
                         
                         .frame(width: 250.0)
                         .font(.footnote)
@@ -42,13 +42,13 @@ struct HabitEditView: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     
                     List {
-                        ForEach(newList.messages, id: \.self) { habitData in
+                        ForEach(newList.titles, id: \.self) { habitData in
                             NavigationLink(destination: HabitRecordView(habitName: habitData)) {
                                 Text(habitData)
                                 Text("\(countHabit.counter)/30").border(Color.black)
                             }
                         }.onDelete { offset in
-                            self.newList.messages.remove(atOffsets: offset)
+                            self.newList.titles.remove(atOffsets: offset)
                         }
                         
                     }
@@ -58,8 +58,8 @@ struct HabitEditView: View {
                         }
                         
                         Button("ボタン",action: {
-                            newList.messages.append(newList.newMessage)
-                            newList.newMessage = ""
+                            newList.titles.append(newList.newTitle)
+                            newList.newTitle = ""
                             self.isShow = true
                             presentation.wrappedValue.dismiss()
                             
