@@ -14,6 +14,8 @@ struct ListDataView: View {
         HStack {
             
             Text(list.title)
+            Text(String(list.id))
+            
             
             
         }

@@ -52,7 +52,7 @@ struct HabitEditView: View {
                         
                     }
                     
-                NavigationLink(destination: ContentView(newList: _newList),isActive: $isShow) {
+                NavigationLink(destination: ContentView(newList: _newList)) {
                             
                         }
                         
