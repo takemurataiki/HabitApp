@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    
+    
 //    @ObservedObject var newList = NewList()
 //    @ObservedObject var countHabit = CountHabit()
     
@@ -35,8 +37,15 @@ struct ContentView: View {
                             Text(habitData)
                             Text("\(newList.counter)/30").border(Color.black)
                         }
-                    }.onDelete { offset in
+                    }
+                    .onDelete { offset in
                         self.newList.titles.remove(atOffsets: offset)
+                    }
+                    
+                }
+                List(listArray) { item in
+                    NavigationLink(destination: HabitRecordSampleView(list: item)) {
+                        ListDataView(list: item)
                     }
                     
                 }

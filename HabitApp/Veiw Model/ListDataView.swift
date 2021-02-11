@@ -13,21 +13,20 @@ struct ListDataView: View {
     var body: some View {
         HStack {
             
+            Text(String(list.count)+"/30")
+            
             Text(list.title)
-            Text(String(list.id))
+            
             
             
             
         }
-        
-        
-        
     }
 }
 
 struct ListDataView_Previews: PreviewProvider {
     static var previews: some View {
-        ListDataView(list: listArray[0])
+        ListDataView(list: listArray[1])
             .previewLayout(.fixed(width: 350, height: 80))
     }
 }
