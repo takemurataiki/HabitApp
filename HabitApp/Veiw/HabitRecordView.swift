@@ -11,9 +11,10 @@ struct HabitRecordView: View {
     @State var habitName: String = "習慣リスト"
     @State var flug: Bool = false
     
-    @EnvironmentObject var countHabit: CountHabit
+    @EnvironmentObject var newList: NewList
+//    @ObservedObject var newList: NewList
     
-    
+//    @EnvironmentObject var countHabit: CountHabit
 //    @ObservedObject var countHabit = CountHabit()
     
     var body: some View {
@@ -22,7 +23,7 @@ struct HabitRecordView: View {
                 Text(habitName)
                 Spacer()
                 
-                Text("\(self.countHabit.counter)")
+                Text("\(self.newList.counter)")
                 
                 
                 Spacer()
@@ -32,20 +33,20 @@ struct HabitRecordView: View {
 //                }
                 
                 Button(action:{
-                    countHabit.countUp()
+                    newList.countUp()
                     self.flug = true
                             
                         }) {
                     Text("習慣追加ボタン")
-                }.disabled(countHabit.counter >= 30)
+                }.disabled(newList.counter >= 30)
                 
                 
                 Button(action:{
-                    countHabit.countDown()
+                    newList.countDown()
                     
                             }) {
                     Text("習慣取消しボタン")
-                }.disabled(countHabit.counter <= 0)
+                }.disabled(newList.counter <= 0)
                 
                 
                 

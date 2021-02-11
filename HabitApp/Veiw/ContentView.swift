@@ -13,7 +13,7 @@ struct ContentView: View {
 //    @ObservedObject var countHabit = CountHabit()
     
     @EnvironmentObject var newList: NewList
-    @EnvironmentObject var countHabit: CountHabit
+//    @EnvironmentObject var countHabit: CountHabit
     
     
     var body: some View {
@@ -33,7 +33,7 @@ struct ContentView: View {
                     ForEach(newList.titles, id: \.self) { habitData in
                         NavigationLink(destination: HabitRecordView(habitName: habitData)) {
                             Text(habitData)
-                            Text("\(countHabit.counter)/30").border(Color.black)
+                            Text("\(newList.counter)/30").border(Color.black)
                         }
                     }.onDelete { offset in
                         self.newList.titles.remove(atOffsets: offset)
