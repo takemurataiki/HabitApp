@@ -36,6 +36,9 @@ class NewList: ObservableObject {
     
     @Published var isShow: Bool = false
     
+    @Published var counts:[Int] = []
+    @Published var newCount = 0
+    
     @Published var counter = 0 //習慣記録日数初期値
     
     func countUp() {

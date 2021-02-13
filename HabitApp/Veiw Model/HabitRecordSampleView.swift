@@ -10,6 +10,8 @@ import SwiftUI
 struct HabitRecordSampleView: View {
     @State var list:ListData
     
+    @Binding  var sampleCount: Int
+    
     var body: some View {
         VStack {
             Spacer()
@@ -18,6 +20,7 @@ struct HabitRecordSampleView: View {
             Spacer()
             
             Text(String(list.count))
+            Text(String(sampleCount))
             
             
             Spacer()
@@ -25,6 +28,7 @@ struct HabitRecordSampleView: View {
             
             Button(action:{
                 list.count += 1
+                sampleCount += 1
                         
                     }) {
                 Text("習慣追加ボタン")
@@ -47,6 +51,9 @@ struct HabitRecordSampleView: View {
 
 struct HabitRecordSampleView_Previews: PreviewProvider {
     static var previews: some View {
-        HabitRecordSampleView(list: listArray[0])
+        NavigationView {
+            HabitRecordSampleView(list: listArray[0], sampleCount: .constant(0))
+            
+        }
     }
 }

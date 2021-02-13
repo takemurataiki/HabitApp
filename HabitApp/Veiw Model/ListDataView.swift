@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ListDataView: View {
-    var list:ListData
+    @State var list:ListData
+    @State var count = 0
     
     var body: some View {
         HStack {
@@ -16,6 +17,7 @@ struct ListDataView: View {
             Text(String(list.count)+"/30")
             
             Text(list.title)
+            Text(String(count)+"/30")
             
             
             

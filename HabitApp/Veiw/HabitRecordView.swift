@@ -9,57 +9,72 @@ import SwiftUI
 
 struct HabitRecordView: View {
     @State var habitName: String = "習慣リスト"
-    @State var flug: Bool = false
+    @State var count:Int = 0
     
-    @EnvironmentObject var newList: NewList
+//    @Binding var hCount: Int
+    
 //    @ObservedObject var newList: NewList
-    
-//    @EnvironmentObject var countHabit: CountHabit
 //    @ObservedObject var countHabit = CountHabit()
     
+    @EnvironmentObject var newList: NewList
+//    @EnvironmentObject var countHabit: CountHabit
+    
+    @Environment(\.presentationMode) var presentation
+    
     var body: some View {
-       
+        NavigationView {
             VStack {
-                Text(habitName)
-                Spacer()
-                
-                Text("\(self.newList.counter)")
-                
-                
-                Spacer()
-                
-//                NavigationLink(destination: ContentView(countHabit: countHabit),isActive: $flug) {
-//
-//                }
-                
-                Button(action:{
-                    newList.countUp()
-                    self.flug = true
-                            
-                        }) {
-                    Text("習慣追加ボタン")
-                }.disabled(newList.counter >= 30)
-                
-                
-                Button(action:{
-                    newList.countDown()
+                    Text(habitName)
                     
+                    Spacer()
+                    
+    //                Text("\(hCount)")
+                    Text("\(count)")
+                    Text("\(newList.newCount)")
+                    
+                    
+                    Spacer()
+                    
+                    NavigationLink(destination: ContentView(newList: _newList)) {
+                                Text("contenview")
+                            }
+    //
+                    Button(action:{
+    //                    newList.countUp()
+    //                    hCount += 1
+                        count += 1
+                        newList.newCount += 1
+                        
+    //                    presentation.wrappedValue.dismiss()
+                                
                             }) {
-                    Text("習慣取消しボタン")
-                }.disabled(newList.counter <= 0)
-                
-                
-                
-                Spacer()
-                
-            }.navigationTitle("HabitRecordView")
+                        Text("習慣追加ボタン")
+                    }.disabled(count >= 30)
+                    
+                    
+                    Button(action:{
+    //                    hCount += -1
+                        count += -1
+                                }) {
+                        Text("習慣取消しボタン")
+                    }.disabled(count <= 0)
+                    
+                    
+                    
+                    Spacer()
+                    
+            }
+            .navigationTitle("HabitRecordView")
+            .navigationBarTitleDisplayMode(.inline)
+        }
         
     }
 }
 
 struct HabitRecordView_Previews: PreviewProvider {
     static var previews: some View {
-        HabitRecordView()
+        HabitRecordView( //hCount: .constant(0)
+        )
             .environmentObject(CountHabit())
             .environmentObject(NewList())
             

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    
+    @State var count:Int = 0
     
 //    @ObservedObject var newList = NewList()
 //    @ObservedObject var countHabit = CountHabit()
@@ -33,9 +33,11 @@ struct ContentView: View {
                 
                 List {
                     ForEach(newList.titles, id: \.self) { habitData in
-                        NavigationLink(destination: HabitRecordView(habitName: habitData)) {
+                        NavigationLink(destination: HabitRecordView(habitName: habitData
+                        )) {
                             Text(habitData)
-                            Text("\(newList.counter)/30").border(Color.black)
+                            Text("\(newList.newCount)/30").border(Color.black)
+                            
                         }
                     }
                     .onDelete { offset in
@@ -43,12 +45,24 @@ struct ContentView: View {
                     }
                     
                 }
-                List(listArray) { item in
-                    NavigationLink(destination: HabitRecordSampleView(list: item)) {
-                        ListDataView(list: item)
+                List {
+                    ForEach(newList.counts, id: \.self) { habitCount in
+                        NavigationLink(destination: HabitRecordView(count: habitCount)) {
+                            
+                            Text("\(habitCount)/30").border(Color.black)
+                        }
+                    }
+                    .onDelete { offset in
+                        self.newList.titles.remove(atOffsets: offset)
                     }
                     
                 }
+//                List(listArray) { item in
+//                    NavigationLink(destination: HabitRecordSampleView(list: item, sampleCount: $count)) {
+//                        ListDataView(list: item)
+//                    }
+//                    
+//                }
                 
             }
             .navigationTitle("ContentView")

@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HabitEditView: View {
+    @State var count:Int = 0
     
     @Environment(\.presentationMode) var presentation
     
@@ -18,6 +19,7 @@ struct HabitEditView: View {
     @EnvironmentObject var newList: NewList
     
     @State var isShow: Bool = false
+    
     
     var body: some View {
         
@@ -39,7 +41,21 @@ struct HabitEditView: View {
                     TextField("補足メモ", text: .constant(""))
                         .frame(width: 250.0, height: 100.0)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+                
+                Button(action:{
+//                    newList.countUp()
+//                    hCount += 1
                     
+                    newList.newCount += 1
+                    
+//                    presentation.wrappedValue.dismiss()
+                            
+                        }) {
+                    
+                    Text("\(newList.newCount)")
+                }
+                
+                
                     List {
                         ForEach(newList.titles, id: \.self) { habitData in
                             NavigationLink(destination: HabitRecordView(habitName: habitData)) {
@@ -59,7 +75,11 @@ struct HabitEditView: View {
                         Button("ボタン",action: {
                             newList.titles.append(newList.newTitle)
                             newList.newTitle = ""
-                            self.isShow = true
+                            
+                            newList.counts.append(newList.newCount)
+                            newList.newCount = 0
+                            
+//                            self.isShow = true
                             presentation.wrappedValue.dismiss()
                             
                         })
