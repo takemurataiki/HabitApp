@@ -47,9 +47,9 @@ struct ContentView: View {
                 }
                 List {
                     ForEach(newList.counts, id: \.self) { habitCount in
+                        let count = habitCount
                         NavigationLink(destination: HabitRecordView(count: habitCount)) {
-                            
-                            Text("\(habitCount)/30").border(Color.black)
+                            Text("\(count)/30").border(Color.black)
                         }
                     }
                     .onDelete { offset in
