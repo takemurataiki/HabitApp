@@ -13,7 +13,7 @@ struct HabitRecordView: View {
     
 //    @Binding var hCount: Int
     
-//    @ObservedObject var newList: NewList
+//    @ObservedObject var newList = NewList()
 //    @ObservedObject var countHabit = CountHabit()
     
     @EnvironmentObject var newList: NewList
@@ -35,9 +35,9 @@ struct HabitRecordView: View {
                     
                     Spacer()
                     
-                    NavigationLink(destination: ContentView(newList: _newList)) {
-                                Text("contenview")
-                            }
+//                    NavigationLink(destination: ContentView(newList: _newList)) {
+//                                Text("contenview")
+//                            }
     //
                     Button(action:{
     //                    newList.countUp()
@@ -74,7 +74,7 @@ struct HabitRecordView: View {
 struct HabitRecordView_Previews: PreviewProvider {
     static var previews: some View {
         HabitRecordView( //hCount: .constant(0)
-        )
+            )
             .environmentObject(CountHabit())
             .environmentObject(NewList())
             

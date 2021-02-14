@@ -56,19 +56,19 @@ struct HabitEditView: View {
                 }
                 
                 
-                    List {
-                        ForEach(newList.titles, id: \.self) { habitData in
-                            NavigationLink(destination: HabitRecordView(habitName: habitData)) {
-                                Text(habitData)
-                                Text("\(newList.counter)/30").border(Color.black)
-                            }
-                        }.onDelete { offset in
-                            self.newList.titles.remove(atOffsets: offset)
-                        }
-                        
-                    }
+//                    List {
+//                        ForEach(newList.titles, id: \.self) { habitData in
+//                            NavigationLink(destination: HabitRecordView(habitName: habitData)) {
+//                                Text(habitData)
+//                                Text("\(newList.counter)/30").border(Color.black)
+//                            }
+//                        }.onDelete { offset in
+//                            self.newList.titles.remove(atOffsets: offset)
+//                        }
+//                        
+//                    }
                     
-                NavigationLink(destination: ContentView(newList: _newList)) {
+                NavigationLink(destination: ContentView(newList: _newList),isActive: $isShow) {
                             
                         }
                         
@@ -79,7 +79,7 @@ struct HabitEditView: View {
                             newList.counts.append(newList.newCount)
                             newList.newCount = 0
                             
-//                            self.isShow = true
+                            self.isShow = true
                             presentation.wrappedValue.dismiss()
                             
                         })
