@@ -45,7 +45,7 @@ struct HabitEditView: View {
                         }
                         
                         Button("ボタン",action: {
-                            newList.titles.append(newList.newTitle)
+                            newList.listArray.append(ListData(title: newList.newTitle,count: 0))
                             newList.newTitle = ""
                             
                             newList.counts.append(newList.newCount)

@@ -44,21 +44,7 @@ struct ContentView: View {
                     }
                     
                 }
-                
-                List {
-                    ForEach(newList.titles, id: \.self) { habitData in
-                        NavigationLink(destination: HabitRecordView(habitName: habitData
-                        )) {
-                            Text(habitData)
-                            Text("\(newList.newCount)/30").border(Color.black)
-                            
-                        }
-                    }
-                    .onDelete { offset in
-                        self.newList.titles.remove(atOffsets: offset)
-                    }
-                    
-                }
+            
                 
             }
             .navigationTitle("ContentView")

@@ -21,9 +21,7 @@ func makeData() -> [ListData] {
     var dataArray:[ListData] = []
     dataArray.append(ListData(title:"起床",count: 1))
     dataArray.append(ListData(title:"朝食",count: 3))
-    dataArray.append(ListData(title:"昼食",count: 14))
-    dataArray.append(ListData(title:"夕食",count: 13))
-    dataArray.append(ListData(title:"就寝",count: 9))
+    
     
     return dataArray
 }
