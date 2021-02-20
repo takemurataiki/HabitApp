@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HabitEditView: View {
-    @State var count:Int = 0
+
     
     @Environment(\.presentationMode) var presentation
     
@@ -26,47 +26,19 @@ struct HabitEditView: View {
         NavigationView {
             VStack {
 
-                    
-                    Text("何を習慣にしたいですか？")
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                    
-                    TextField("習慣を入れてください", text: $newList.newTitle)
-                        
-                        .frame(width: 250.0)
-                        .font(.footnote)
-                        .foregroundColor(.gray)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    
-                    TextField("補足メモ", text: .constant(""))
-                        .frame(width: 250.0, height: 100.0)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                Text("何を習慣にしたいですか？")
+                    .font(.footnote)
+                    .foregroundColor(.gray)
                 
-                Button(action:{
-//                    newList.countUp()
-//                    hCount += 1
-                    
-                    newList.newCount += 1
-                    
-//                    presentation.wrappedValue.dismiss()
-                            
-                        }) {
-                    
-                    Text("\(newList.newCount)")
-                }
+                TextField("習慣を入れてください", text: $newList.newTitle)
+                    .frame(width: 250.0)
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
                 
-                
-//                    List {
-//                        ForEach(newList.titles, id: \.self) { habitData in
-//                            NavigationLink(destination: HabitRecordView(habitName: habitData)) {
-//                                Text(habitData)
-//                                Text("\(newList.counter)/30").border(Color.black)
-//                            }
-//                        }.onDelete { offset in
-//                            self.newList.titles.remove(atOffsets: offset)
-//                        }
-//                        
-//                    }
+                TextField("補足メモ", text: .constant(""))
+                    .frame(width: 250.0, height: 100.0)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
                     
                 NavigationLink(destination: ContentView(newList: _newList),isActive: $isShow) {
                             

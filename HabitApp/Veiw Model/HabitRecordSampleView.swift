@@ -10,6 +10,8 @@ import SwiftUI
 struct HabitRecordSampleView: View {
     @Binding  var list:ListData
     
+    @Environment(\.presentationMode) var presentation
+    
     var body: some View {
         VStack {
             Spacer()
@@ -23,6 +25,7 @@ struct HabitRecordSampleView: View {
             
             Button(action:{
                 list.count += 1
+                presentation.wrappedValue.dismiss()
                         
                     }) {
                 Text("習慣追加ボタン")
@@ -31,6 +34,7 @@ struct HabitRecordSampleView: View {
             
             Button(action:{
                 list.count -= 1
+                presentation.wrappedValue.dismiss()
                 
                         }) {
                 Text("習慣取消しボタン")
