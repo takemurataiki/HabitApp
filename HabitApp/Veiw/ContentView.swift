@@ -11,7 +11,7 @@ struct ContentView: View {
     
     @State var count:Int = 0
     
-//    @ObservedObject var newList = NewList()
+//    @ObservedObject var newList:NewList
 //    @ObservedObject var countHabit = CountHabit()
     
     @EnvironmentObject var newList: NewList
@@ -20,7 +20,7 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            VStack(alignment: .center) {
+            VStack {
                 HStack {
                     EditButton()
                         .padding()
@@ -28,6 +28,20 @@ struct ContentView: View {
                         Text("習慣追加ボタン")
                         
                     }.padding(.all).border(Color.black)
+                    
+                }
+                
+                List {
+                    ForEach(newList.listArray.indexed(), id: \.1.id) { index, habitData in
+                        NavigationLink(destination: HabitRecordSampleView(list: $newList.listArray[index] )) {
+                            Text(habitData.title)
+                            Text("\(habitData.count)/30")
+                            
+                        }
+                    }
+                    .onDelete { offset in
+                        self.newList.titles.remove(atOffsets: offset)
+                    }
                     
                 }
                 
@@ -45,24 +59,6 @@ struct ContentView: View {
                     }
                     
                 }
-                List {
-                    ForEach(newList.counts, id: \.self) { habitCount in
-                        let count = habitCount
-                        NavigationLink(destination: HabitRecordView(count: habitCount)) {
-                            Text("\(count)/30").border(Color.black)
-                        }
-                    }
-                    .onDelete { offset in
-                        self.newList.titles.remove(atOffsets: offset)
-                    }
-                    
-                }
-//                List(listArray) { item in
-//                    NavigationLink(destination: HabitRecordSampleView(list: item, sampleCount: $count)) {
-//                        ListDataView(list: item)
-//                    }
-//                    
-//                }
                 
             }
             .navigationTitle("ContentView")

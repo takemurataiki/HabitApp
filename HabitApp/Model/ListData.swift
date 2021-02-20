@@ -11,7 +11,7 @@ var listArray:[ListData] = makeData()
 
 
 struct ListData: Identifiable {
-    var id:Int
+    var id = UUID()
     var title:String
     var count:Int
     
@@ -19,17 +19,25 @@ struct ListData: Identifiable {
 
 func makeData() -> [ListData] {
     var dataArray:[ListData] = []
-    dataArray.append(ListData(id:1, title:"起床",count: 1))
-    dataArray.append(ListData(id:2, title:"朝食",count: 3))
-    dataArray.append(ListData(id:3, title:"昼食",count: 14))
-    dataArray.append(ListData(id:4, title:"夕食",count: 13))
-    dataArray.append(ListData(id:5, title:"就寝",count: 9))
+    dataArray.append(ListData(title:"起床",count: 1))
+    dataArray.append(ListData(title:"朝食",count: 3))
+    dataArray.append(ListData(title:"昼食",count: 14))
+    dataArray.append(ListData(title:"夕食",count: 13))
+    dataArray.append(ListData(title:"就寝",count: 9))
     
     return dataArray
 }
 
+extension Collection {
+  func indexed() -> Array<(offset: Int, element: Element)> {
+    return Array(self.enumerated())
+  }
+}
+
 
 class NewList: ObservableObject {
+    @Published var listArray:[ListData] = makeData() //リストの配列
+    
     @Published var titles: [String] = [] //タイトル
     @Published var subTitles: [String] = [] // サブタイトル
     @Published var newTitle = "" //テキスト初期化
@@ -40,6 +48,7 @@ class NewList: ObservableObject {
     @Published var newCount = 0
     
     @Published var counter = 0 //習慣記録日数初期値
+    
     
     func countUp() {
         counter += 1
