@@ -23,7 +23,7 @@ struct HabitEditView: View {
     
     var body: some View {
         
-        NavigationView {
+        
             VStack {
 
                 Text("何を習慣にしたいですか？")
@@ -63,7 +63,7 @@ struct HabitEditView: View {
             }.navigationTitle("HabitEditView")
             .navigationBarTitleDisplayMode(.inline)
         }
-    }
+    
 }
 
 struct HabitEditView_Previews: PreviewProvider {

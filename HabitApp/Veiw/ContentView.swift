@@ -22,8 +22,7 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 HStack {
-                    EditButton()
-                        .padding()
+                    
                     NavigationLink(destination: HabitEditView()){
                         Text("習慣追加ボタン")
                         
@@ -43,8 +42,9 @@ struct ContentView: View {
                         }
                     }
                     .onDelete { offset in
-                        self.newList.titles.remove(atOffsets: offset)
+                        self.newList.listArray.remove(atOffsets: offset)
                     }
+                    .onMove(perform: newList.rowReplace)
                     
                 }
             
@@ -52,6 +52,7 @@ struct ContentView: View {
             }
             .navigationTitle("ContentView")
             .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(trailing: EditButton())
             
         }
         

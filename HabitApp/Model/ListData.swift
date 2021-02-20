@@ -33,6 +33,8 @@ extension Collection {
 }
 
 
+
+
 class NewList: ObservableObject {
     @Published var listArray:[ListData] = makeData() //リストの配列
     
@@ -55,6 +57,10 @@ class NewList: ObservableObject {
     func countDown() {
         counter += -1
     } //習慣取消し
+    
+    func rowReplace(_ from: IndexSet, _ to: Int) {
+            listArray.move(fromOffsets: from, toOffset: to)
+        }
     
     
     
