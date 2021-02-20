@@ -51,6 +51,7 @@ struct HabitRecordSampleView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             HabitRecordSampleView(list: .constant(ListData(title:"起床",count: 1)))
+                .environmentObject(NewList())
             
         }
     }

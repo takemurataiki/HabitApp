@@ -40,7 +40,9 @@ struct HabitEditView: View {
                     .frame(width: 250.0, height: 100.0)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     
-                NavigationLink(destination: ContentView(newList: _newList),isActive: $isShow) {
+                NavigationLink(destination: ContentView(newList: _newList).environmentObject(self.newList),
+                               isActive: $isShow)
+                {
                             
                         }
                         
