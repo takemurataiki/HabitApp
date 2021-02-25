@@ -33,12 +33,12 @@ struct ContentView: View {
                 
                 List {
                     ForEach(newList.listArray.indexed(), id: \.1.id) { index, habitData in
-                        NavigationLink(destination: HabitRecordSampleView(list: $newList.listArray[index] )
+                        NavigationLink(destination: HabitRecordSampleView(list: $newList.listArray[index], progress: $progress )
                                         .environmentObject(self.newList)
                                         
                         ) {
                             ZStack {
-                                ProgressCircleVM(progress: $progress,
+                                ProgressCircleVM(progress: progress,
                                                    lineColor: .blue,
                                                    lineWidth: 15,
                                                    lineCap:.butt,

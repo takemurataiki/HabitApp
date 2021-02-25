@@ -10,7 +10,7 @@ import SwiftUI
 struct HabitRecordSampleView: View {
     @Binding  var list:ListData
     
-    @State private var progress: Float = 0
+    @Binding var progress: Float
     
     @Environment(\.presentationMode) var presentation
     
@@ -21,7 +21,7 @@ struct HabitRecordSampleView: View {
             Spacer()
             
             ZStack {
-                ProgressCircleVM(progress: $progress,
+                ProgressCircleVM(progress: 0,
                                    lineColor: .blue,
                                    lineWidth: 25,
                                    lineCap:.butt,
@@ -70,7 +70,7 @@ struct HabitRecordSampleView: View {
 struct HabitRecordSampleView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            HabitRecordSampleView(list: .constant(ListData(title:"起床",count: 1)))
+            HabitRecordSampleView(list: .constant(ListData(title:"起床",count: 1)), progress: .constant(0) )
                 .environmentObject(NewList())
             
         }

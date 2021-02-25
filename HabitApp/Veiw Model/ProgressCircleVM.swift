@@ -10,7 +10,7 @@ import SwiftUI
 struct ProgressCircleVM: View {
     
     /// 進捗
-    @Binding var progress: Float
+    var progress: Float = 0
     
     /// 線の色
     let lineColor: Color
@@ -47,7 +47,7 @@ struct ProgressCircleVM: View {
 struct ProgressCircleVM_Previews: PreviewProvider {
     static var previews: some View {
         ProgressCircleVM(
-            progress: .constant(0.3),
+            progress: 0.3,
             lineColor: .blue,
             lineWidth: 25,
             lineCap:.butt,
