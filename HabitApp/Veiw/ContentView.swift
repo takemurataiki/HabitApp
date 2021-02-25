@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State var count:Int = 0
+    @State private var progress: Float = 0
     
 //    @ObservedObject var newList:NewList
 //    @ObservedObject var countHabit = CountHabit()
@@ -36,8 +37,24 @@ struct ContentView: View {
                                         .environmentObject(self.newList)
                                         
                         ) {
+                            ZStack {
+                                ProgressCircleVM(progress: $progress,
+                                                   lineColor: .blue,
+                                                   lineWidth: 15,
+                                                   lineCap:.butt,
+                                                   textColor: .blue,
+                                                   textFont: .system(size: 25, weight: .black, design: .default))
+                                    .frame(width:60, height: 60)
+                                    .padding()
+                                // パーセント
+                                Text("\(Int((min(Double(progress), 1.0) * 100)/3.3))")
+                                    .font(.system(size: 25, weight: .black, design: .default))
+                                    .foregroundColor(.blue)
+                            }
+                            
                             Text(habitData.title)
                             Text("\(habitData.count)/30")
+                            
                             
                         }
                     }

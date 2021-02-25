@@ -10,12 +10,30 @@ import SwiftUI
 struct HabitRecordSampleView: View {
     @Binding  var list:ListData
     
+    @State private var progress: Float = 0
+    
     @Environment(\.presentationMode) var presentation
     
     var body: some View {
         VStack {
-            Spacer()
             Text(list.title)
+            
+            Spacer()
+            
+            ZStack {
+                ProgressCircleVM(progress: $progress,
+                                   lineColor: .blue,
+                                   lineWidth: 25,
+                                   lineCap:.butt,
+                                   textColor: .blue,
+                                   textFont: .system(size: 25, weight: .black, design: .default))
+                    .frame(width:120, height: 120)
+                    .padding()
+                // パーセント
+                Text("\(Int((min(Double(progress), 1.0) * 100)/3.3))/30")
+                    .font(.system(size: 25, weight: .black, design: .default))
+                    .foregroundColor(.blue)
+            }
             
             Spacer()
             
@@ -25,6 +43,7 @@ struct HabitRecordSampleView: View {
             
             Button(action:{
                 list.count += 1
+                progress += 12/360
                 presentation.wrappedValue.dismiss()
                         
                     }) {
@@ -34,6 +53,7 @@ struct HabitRecordSampleView: View {
             
             Button(action:{
                 list.count -= 1
+                progress -= 12/360
                 presentation.wrappedValue.dismiss()
                 
                         }) {
