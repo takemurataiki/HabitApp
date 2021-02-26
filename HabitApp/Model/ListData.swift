@@ -6,30 +6,34 @@
 //
 
 import Foundation
+import SwiftUI
 
 var listArray:[ListData] = makeData()
 
-
 struct ListData: Identifiable {
     var id = UUID()
-    var title:String
-    var count:Float
+    var title: String
+    var count: Float
+    var color: Color
+    
     
 }
 
 func makeData() -> [ListData] {
     var dataArray:[ListData] = []
-    dataArray.append(ListData(title:"起床",count: 12/360))
-    dataArray.append(ListData(title:"朝食",count: 24/360))
+    dataArray.append(ListData(title:"起床",count: 12/360,color: Color.red))
+    dataArray.append(ListData(title:"朝食",count: 24/360,color: Color.blue))
     
     
     return dataArray
 }
 
+
 extension Collection {
   func indexed() -> Array<(offset: Int, element: Element)> {
     return Array(self.enumerated())
   }
+    
 }
 
 
@@ -63,6 +67,12 @@ class NewList: ObservableObject {
     
     /// 進捗
     @Published var progress: Float = 0
+    
+    ///テーマ色
+    @Published var colors: [ListData] = []
+    
+    
+    
     
     ///表示の切り替え
     @Published var isShow: Bool = false

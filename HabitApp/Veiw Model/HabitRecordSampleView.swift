@@ -10,7 +10,7 @@ import SwiftUI
 struct HabitRecordSampleView: View {
     @Binding  var list:ListData
     
-    @Binding var progress: Float
+    
     
 //    @EnvironmentObject var newList: NewList
     
@@ -27,17 +27,17 @@ struct HabitRecordSampleView: View {
             ///円グラフ
             ZStack {
                 ProgressCircleVM(progress: list.count,
-                                   lineColor: .blue,
+                                 lineColor: list.color,
                                    lineWidth: 25,
                                    lineCap:.butt,
-                                   textColor: .blue,
+                                   textColor: list.color,
                                    textFont: .system(size: 25, weight: .black, design: .default))
                     .frame(width:120, height: 120)
                     .padding()
                 // パーセント
                 Text("\(Int((min(Double(list.count), 1.0) * 100)/3.3))/30")
                     .font(.system(size: 25, weight: .black, design: .default))
-                    .foregroundColor(.blue)
+                    .foregroundColor(list.color)
             }
             
             Spacer()
@@ -47,7 +47,6 @@ struct HabitRecordSampleView: View {
             ///習慣達成ボタン
             Button(action:{
                 list.count += 12/360
-                progress += 12/360
                 presentation.wrappedValue.dismiss()
                         
                     }) {
@@ -57,7 +56,6 @@ struct HabitRecordSampleView: View {
             ///習慣取消しボタン
             Button(action:{
                 list.count -= 12/360
-                progress -= 12/360
                 presentation.wrappedValue.dismiss()
                 
                         }) {
@@ -74,7 +72,7 @@ struct HabitRecordSampleView: View {
 struct HabitRecordSampleView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            HabitRecordSampleView(list: .constant(ListData(title:"起床",count: 0.3)), progress: .constant(0) )
+            HabitRecordSampleView(list: .constant(ListData(title:"起床",count: 0.3,color: .blue)))
                 .environmentObject(NewList())
             
         }

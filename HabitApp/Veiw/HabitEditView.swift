@@ -9,8 +9,8 @@ import SwiftUI
 
 struct HabitEditView: View {
 
+    @State var selectedColor = 0
     
-    @Environment(\.presentationMode) var presentation
     
 //    @ObservedObject var countHabit: CountHabit()
 //    @EnvironmentObject var countHabit: CountHabit
@@ -18,13 +18,15 @@ struct HabitEditView: View {
 //    @ObservedObject var newList = NewList()
     @EnvironmentObject var newList: NewList
     
-    @State var isShow: Bool = false
+    @Environment(\.presentationMode) var presentation
     
     
     var body: some View {
         
         
             VStack {
+                
+                Spacer()
 
                 Text("何を習慣にしたいですか？")
                     .font(.footnote)
@@ -41,24 +43,34 @@ struct HabitEditView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     
                 NavigationLink(destination: ContentView(newList: _newList).environmentObject(self.newList),
-                               isActive: $isShow)
+                               isActive: $newList.isShow)
                 {
                             
                         }
+                Picker(selection: $selectedColor, label: Text("Color")) {
+                    Text("Red").tag(0)
+                    Text("Blue").tag(1)
+                    Text("Green").tag(2)
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                
+                Spacer()
                         
-                        Button("ボタン",action: {
-                            newList.listArray.append(ListData(title: newList.newTitle,count: 0))
-                            newList.newTitle = ""
-                            
-                            newList.counts.append(newList.newCount)
-                            newList.newCount = 0
-                            
-                            self.isShow = true
-                            presentation.wrappedValue.dismiss()
-                            
-                        })
-                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                        .border(Color.black)
+                Button("ボタン",action: {
+                    newList.listArray.append(ListData(title: newList.newTitle,count: 0,  color: .blue))
+                    newList.newTitle = ""
+                    
+                    newList.counts.append(newList.newCount)
+                    newList.newCount = 0
+                    
+                    self.newList.isShow = true
+                    presentation.wrappedValue.dismiss()
+                    
+                })
+                .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                .border(Color.black)
+                
+                Spacer()
                     
             }.navigationTitle("HabitEditView")
             .navigationBarTitleDisplayMode(.inline)
