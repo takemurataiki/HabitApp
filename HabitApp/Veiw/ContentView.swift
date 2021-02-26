@@ -38,7 +38,7 @@ struct ContentView: View {
                                         
                         ) {
                             ZStack {
-                                ProgressCircleVM(progress: progress,
+                                ProgressCircleVM(progress: habitData.count,
                                                    lineColor: .blue,
                                                    lineWidth: 15,
                                                    lineCap:.butt,
@@ -47,13 +47,13 @@ struct ContentView: View {
                                     .frame(width:60, height: 60)
                                     .padding()
                                 // パーセント
-                                Text("\(Int((min(Double(progress), 1.0) * 100)/3.3))")
+                                Text("\(Int((min(Double(habitData.count), 1.0) * 100)/3.3))")
                                     .font(.system(size: 25, weight: .black, design: .default))
                                     .foregroundColor(.blue)
                             }
                             
                             Text(habitData.title)
-                            Text("\(habitData.count)/30")
+                            Text("\(Int((min(Double(habitData.count), 1.0) * 100)/3.3))/30")
                             
                             
                         }

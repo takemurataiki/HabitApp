@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ProgressCircleVM: View {
     
+    @EnvironmentObject var newList: NewList
+    
     /// 進捗
     var progress: Float = 0
     
@@ -35,7 +37,7 @@ struct ProgressCircleVM: View {
                 .trim(from: 0, to: CGFloat(min(progress,1.0))) // 線の長さを指定
                 .stroke(lineColor, style: StrokeStyle(lineWidth: lineWidth,lineCap: lineCap))
                 .rotationEffect(.degrees(-90.0)) // 線を上から開始させる
-                .animation(.linear) // 線をAnimationさせる
+//                .animation(.easeOut) // 線をAnimationさせる
             
             
         }
@@ -53,6 +55,7 @@ struct ProgressCircleVM_Previews: PreviewProvider {
             lineCap:.butt,
             textColor: .blue,
             textFont: .system(size: 25, weight: .black, design: .default))
+            .environmentObject(NewList())
 
     }
 }

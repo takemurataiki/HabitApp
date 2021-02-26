@@ -12,16 +12,21 @@ struct HabitRecordSampleView: View {
     
     @Binding var progress: Float
     
+//    @EnvironmentObject var newList: NewList
+    
     @Environment(\.presentationMode) var presentation
     
     var body: some View {
         VStack {
+            Spacer()
+            ///リストのタイトル
             Text(list.title)
             
             Spacer()
             
+            ///円グラフ
             ZStack {
-                ProgressCircleVM(progress: 0,
+                ProgressCircleVM(progress: list.count,
                                    lineColor: .blue,
                                    lineWidth: 25,
                                    lineCap:.butt,
@@ -30,29 +35,28 @@ struct HabitRecordSampleView: View {
                     .frame(width:120, height: 120)
                     .padding()
                 // パーセント
-                Text("\(Int((min(Double(progress), 1.0) * 100)/3.3))/30")
+                Text("\(Int((min(Double(list.count), 1.0) * 100)/3.3))/30")
                     .font(.system(size: 25, weight: .black, design: .default))
                     .foregroundColor(.blue)
             }
             
             Spacer()
             
-            Text(String(list.count))
+
             
-            Spacer()
-            
+            ///習慣達成ボタン
             Button(action:{
-                list.count += 1
+                list.count += 12/360
                 progress += 12/360
                 presentation.wrappedValue.dismiss()
                         
                     }) {
                 Text("習慣追加ボタン")
-            }.disabled(list.count >= 30)
+            }.disabled(list.count >= 1)
             
-            
+            ///習慣取消しボタン
             Button(action:{
-                list.count -= 1
+                list.count -= 12/360
                 progress -= 12/360
                 presentation.wrappedValue.dismiss()
                 
@@ -70,7 +74,7 @@ struct HabitRecordSampleView: View {
 struct HabitRecordSampleView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            HabitRecordSampleView(list: .constant(ListData(title:"起床",count: 1)), progress: .constant(0) )
+            HabitRecordSampleView(list: .constant(ListData(title:"起床",count: 0.3)), progress: .constant(0) )
                 .environmentObject(NewList())
             
         }
