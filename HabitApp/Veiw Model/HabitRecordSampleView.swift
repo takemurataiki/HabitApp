@@ -24,8 +24,9 @@ struct HabitRecordSampleView: View {
             
             Spacer()
             
-            ///円グラフ
+            ///グラフ
             ZStack {
+                ///円グラフ
                 ProgressCircleVM(progress: list.count,
                                  lineColor: list.color,
                                    lineWidth: 25,
@@ -34,7 +35,7 @@ struct HabitRecordSampleView: View {
                                    textFont: .system(size: 25, weight: .black, design: .default))
                     .frame(width:120, height: 120)
                     .padding()
-                // パーセント
+                // パーセント表示
                 Text("\(Int((min(Double(list.count), 1.0) * 100)/3.3))/30")
                     .font(.system(size: 25, weight: .black, design: .default))
                     .foregroundColor(list.color)

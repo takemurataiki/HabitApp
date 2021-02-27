@@ -32,21 +32,19 @@ struct HabitEditView: View {
                     .font(.footnote)
                     .foregroundColor(.gray)
                 
+                ///テキスト書き込み
                 TextField("習慣を入れてください", text: $newList.newTitle)
                     .frame(width: 250.0)
                     .font(.footnote)
                     .foregroundColor(.gray)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
+                ///テキスト書き込み
                 TextField("補足メモ", text: .constant(""))
                     .frame(width: 250.0, height: 100.0)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    
-                NavigationLink(destination: ContentView(newList: _newList).environmentObject(self.newList),
-                               isActive: $newList.isShow)
-                {
-                            
-                        }
+                
+                ///色の選択
                 Picker(selection: $selectedColor, label: Text("Color")) {
                     Text("Red").tag(0)
                     Text("Blue").tag(1)
@@ -55,14 +53,13 @@ struct HabitEditView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 
                 Spacer()
-                        
+                
+                ///完了ボタン
                 Button("ボタン",action: {
                     newList.listArray.append(ListData(title: newList.newTitle,count: 0,  color: .blue))
+                    ///テキストの初期化
                     newList.newTitle = ""
-                    
-                    
-                    
-                    
+                    ///前画面に戻る
                     presentation.wrappedValue.dismiss()
                     
                 })
