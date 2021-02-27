@@ -43,29 +43,34 @@ struct HabitEditView: View {
                     
                     ///色の選択
                     Form {
-                        Picker(selection: $selectedColor, label: Text("Color")) {
+                        Picker(selection: $selectedColor, label: Text("カテゴリ")) {
                             ForEach (0..<newList.colors.count) { index in
-                                Text(colorName[index]).tag(index)
-                               
-                                
-                                
+                                HStack {
+                                    ProgressCircleVM(
+                                        progress: 1,
+                                        lineColor: newList.colors[index],
+                                        lineWidth: 10,
+                                        lineCap:.butt,
+                                        textColor: .blue,
+                                        textFont: .system(size: 15, weight: .black, design: .default))
+                                        .frame(width: 10, height: 10)
+                                    
+                                    Text(colorName[index])
+                                        .tag(index)
+                                        .padding(.leading)
+                                }
+                            }
+                            Form {
+                                ///カテゴリーの生成画面
                             }
                         }
                         .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                         
-                        
-                        
                     }.frame(height: 150.0)
-                ProgressCircleVM(
-                    progress: 1,
-                    lineColor: newList.colors[selectedColor],
-                    lineWidth: 15,
-                    lineCap:.butt,
-                    textColor: .blue,
-                    textFont: .system(size: 25, weight: .black, design: .default))
-                    .frame(width: 50.0, height: 50.0)
+                
+                
                     
-                    
+                    Spacer()
                     ///完了ボタン
                     Button("ボタン",action: {
                         newList.listArray.append(ListData(title: newList.newTitle,count: 0,  color: newList.colors[selectedColor]))
@@ -81,8 +86,6 @@ struct HabitEditView: View {
                     Spacer()
                         
                 }
-                .navigationTitle("HabitEditView")
-            .navigationBarTitleDisplayMode(.inline)
             }
             
         }
