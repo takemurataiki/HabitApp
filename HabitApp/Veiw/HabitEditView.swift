@@ -60,10 +60,9 @@ struct HabitEditView: View {
                     newList.listArray.append(ListData(title: newList.newTitle,count: 0,  color: .blue))
                     newList.newTitle = ""
                     
-                    newList.counts.append(newList.newCount)
-                    newList.newCount = 0
                     
-                    self.newList.isShow = true
+                    
+                    
                     presentation.wrappedValue.dismiss()
                     
                 })
