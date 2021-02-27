@@ -10,6 +10,7 @@ import SwiftUI
 struct HabitEditView: View {
 
     @State var selectedColor = 0
+    @State var colorName = ["Red","Blue","Green","Yellow","Purple"]
 
 //    @ObservedObject var newList = NewList()
     @EnvironmentObject var newList: NewList
@@ -19,68 +20,71 @@ struct HabitEditView: View {
     
     var body: some View {
         
+        NavigationView {
             VStack {
-                
-                Spacer()
+                    
+                    Spacer()
 
-                Text("何を習慣にしたいですか？")
-                    .font(.footnote)
-                    .foregroundColor(.gray)
-                
-                ///テキスト書き込み
-                TextField("習慣を入れてください", text: $newList.newTitle)
-                    .frame(width: 250.0)
-                    .font(.footnote)
-                    .foregroundColor(.gray)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                
-                ///テキスト書き込み
-                TextField("補足メモ", text: .constant(""))
-                    .frame(width: 250.0, height: 100.0)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                
-                ///色の選択
-                HStack {
-                    Picker(selection: $selectedColor, label: Text("Color")) {
-                        Text("Red").tag(0)
-                        Text("Blue").tag(1)
-                        Text("Green").tag(2)
-                        Text("Yellow").tag(3)
-                        Text("Purple").tag(4)
-                    }
+                    Text("何を習慣にしたいですか？")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                    
+                    ///テキスト書き込み
+                    TextField("習慣を入れてください", text: $newList.newTitle)
+                        .frame(width: 250.0)
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+                    ///テキスト書き込み
+                    TextField("補足メモ", text: .constant(""))
+                        .frame(width: 250.0, height: 100.0)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+                    ///色の選択
+                    Form {
+                        Picker(selection: $selectedColor, label: Text("Color")) {
+                            ForEach (0..<newList.colors.count) { index in
+                                Text(colorName[index]).tag(index)
+                               
+                                
+                                
+                            }
+                        }
+                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                        
+                        
+                        
+                    }.frame(height: 150.0)
+                ProgressCircleVM(
+                    progress: 1,
+                    lineColor: newList.colors[selectedColor],
+                    lineWidth: 15,
+                    lineCap:.butt,
+                    textColor: .blue,
+                    textFont: .system(size: 25, weight: .black, design: .default))
+                    .frame(width: 50.0, height: 50.0)
+                    
+                    
+                    ///完了ボタン
+                    Button("ボタン",action: {
+                        newList.listArray.append(ListData(title: newList.newTitle,count: 0,  color: newList.colors[selectedColor]))
+                        ///テキストの初期化
+                        newList.newTitle = ""
+                        ///前画面に戻る
+                        presentation.wrappedValue.dismiss()
+                        
+                    })
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                    .frame(width: 200.0)
-                    .pickerStyle(SegmentedPickerStyle())
+                    .border(Color.black)
                     
-                    
-                    ProgressCircleVM(
-                        progress: 1,
-                        lineColor: newList.colors[selectedColor],
-                        lineWidth: 15,
-                        lineCap:.butt,
-                        textColor: .blue,
-                        textFont: .system(size: 25, weight: .black, design: .default))
-                        .frame(width: 50.0, height: 50.0)
+                    Spacer()
+                        
                 }
-                
-                
-                ///完了ボタン
-                Button("ボタン",action: {
-                    newList.listArray.append(ListData(title: newList.newTitle,count: 0,  color: newList.colors[selectedColor]))
-                    ///テキストの初期化
-                    newList.newTitle = ""
-                    ///前画面に戻る
-                    presentation.wrappedValue.dismiss()
-                    
-                })
-                .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                .border(Color.black)
-                
-                Spacer()
-                    
-            }
-            .navigationTitle("HabitEditView")
+                .navigationTitle("HabitEditView")
             .navigationBarTitleDisplayMode(.inline)
+            }
+            
         }
     
 }
