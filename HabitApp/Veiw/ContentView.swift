@@ -30,8 +30,6 @@ struct ContentView: View {
                 List {
                     ForEach(newList.listArray.indexed(), id: \.1.id) { index, habitData in
                         NavigationLink(destination: HabitRecordSampleView(list: $newList.listArray[index])
-                                        .environmentObject(self.newList)
-                                        
                         ) {
                             ///グラフ
                             ZStack {

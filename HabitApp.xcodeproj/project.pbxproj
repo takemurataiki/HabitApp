@@ -64,7 +64,7 @@
 			children = (
 				23F8833A25C048AB00FC73C2 /* ContentView.swift */,
 				239318EF25C372B400C3796B /* HabitEditView.swift */,
-				239318F225C3A56500C3796B /* HabitRecordView.swift */,
+				2336192825D5444C006C25E3 /* HabitRecordSampleView.swift */,
 			);
 			path = Veiw;
 			sourceTree = "<group>";
@@ -73,7 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				239318F825C3C90100C3796B /* ListDataView.swift */,
-				2336192825D5444C006C25E3 /* HabitRecordSampleView.swift */,
+				239318F225C3A56500C3796B /* HabitRecordView.swift */,
 				2392FB4525E76C73009164B2 /* ProgressCircleVM.swift */,
 			);
 			path = "Veiw Model";

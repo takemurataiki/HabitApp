@@ -47,12 +47,20 @@ struct HabitEditView: View {
                     Text("Yellow").tag(3)
                     Text("Purple").tag(4)
                 }
+                .frame(width: 200.0)
                 .pickerStyle(SegmentedPickerStyle())
                 
-                HStack {
-                    newList.colors[selectedColor]
-                        .frame(width: 250.0, height: 100.0)
-                }
+                
+                Spacer()
+                
+                ProgressCircleVM(
+                    progress: 1,
+                    lineColor: newList.colors[selectedColor],
+                    lineWidth: 25,
+                    lineCap:.butt,
+                    textColor: .blue,
+                    textFont: .system(size: 25, weight: .black, design: .default))
+                    .frame(width: 100.0, height: 100.0)
                 
                 Spacer()
                 
