@@ -10,11 +10,7 @@ import SwiftUI
 struct HabitEditView: View {
 
     @State var selectedColor = 0
-    
-    
-//    @ObservedObject var countHabit: CountHabit()
-//    @EnvironmentObject var countHabit: CountHabit
-    
+
 //    @ObservedObject var newList = NewList()
     @EnvironmentObject var newList: NewList
     
@@ -22,7 +18,6 @@ struct HabitEditView: View {
     
     
     var body: some View {
-        
         
             VStack {
                 
@@ -49,14 +44,21 @@ struct HabitEditView: View {
                     Text("Red").tag(0)
                     Text("Blue").tag(1)
                     Text("Green").tag(2)
+                    Text("Yellow").tag(3)
+                    Text("Purple").tag(4)
                 }
                 .pickerStyle(SegmentedPickerStyle())
+                
+                HStack {
+                    newList.colors[selectedColor]
+                        .frame(width: 250.0, height: 100.0)
+                }
                 
                 Spacer()
                 
                 ///完了ボタン
                 Button("ボタン",action: {
-                    newList.listArray.append(ListData(title: newList.newTitle,count: 0,  color: .blue))
+                    newList.listArray.append(ListData(title: newList.newTitle,count: 0,  color: newList.colors[selectedColor]))
                     ///テキストの初期化
                     newList.newTitle = ""
                     ///前画面に戻る
@@ -68,7 +70,8 @@ struct HabitEditView: View {
                 
                 Spacer()
                     
-            }.navigationTitle("HabitEditView")
+            }
+            .navigationTitle("HabitEditView")
             .navigationBarTitleDisplayMode(.inline)
         }
     
