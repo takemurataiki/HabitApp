@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HabitRecordSampleView: View {
+struct HabitRecordView: View {
     @Binding  var list:ListData
     
     
@@ -70,10 +70,10 @@ struct HabitRecordSampleView: View {
     }
 }
 
-struct HabitRecordSampleView_Previews: PreviewProvider {
+struct HabitRecordView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            HabitRecordSampleView(list: .constant(ListData(title:"起床",count: 0.3,color: .blue)))
+            HabitRecordView(list: .constant(ListData(title:"起床",count: 0.3,color: .blue)))
                 .environmentObject(NewList())
             
         }

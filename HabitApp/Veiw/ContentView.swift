@@ -29,7 +29,7 @@ struct ContentView: View {
                 ///習慣リスト一覧
                 List {
                     ForEach(newList.listArray.indexed(), id: \.1.id) { index, habitData in
-                        NavigationLink(destination: HabitRecordSampleView(list: $newList.listArray[index])
+                        NavigationLink(destination: HabitRecordView(list: $newList.listArray[index])
                         ) {
                             ///グラフ
                             ZStack {

@@ -40,29 +40,29 @@ struct HabitEditView: View {
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
                 ///色の選択
-                Picker(selection: $selectedColor, label: Text("Color")) {
-                    Text("Red").tag(0)
-                    Text("Blue").tag(1)
-                    Text("Green").tag(2)
-                    Text("Yellow").tag(3)
-                    Text("Purple").tag(4)
+                HStack {
+                    Picker(selection: $selectedColor, label: Text("Color")) {
+                        Text("Red").tag(0)
+                        Text("Blue").tag(1)
+                        Text("Green").tag(2)
+                        Text("Yellow").tag(3)
+                        Text("Purple").tag(4)
+                    }
+                    .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                    .frame(width: 200.0)
+                    .pickerStyle(SegmentedPickerStyle())
+                    
+                    
+                    ProgressCircleVM(
+                        progress: 1,
+                        lineColor: newList.colors[selectedColor],
+                        lineWidth: 15,
+                        lineCap:.butt,
+                        textColor: .blue,
+                        textFont: .system(size: 25, weight: .black, design: .default))
+                        .frame(width: 50.0, height: 50.0)
                 }
-                .frame(width: 200.0)
-                .pickerStyle(SegmentedPickerStyle())
                 
-                
-                Spacer()
-                
-                ProgressCircleVM(
-                    progress: 1,
-                    lineColor: newList.colors[selectedColor],
-                    lineWidth: 25,
-                    lineCap:.butt,
-                    textColor: .blue,
-                    textFont: .system(size: 25, weight: .black, design: .default))
-                    .frame(width: 100.0, height: 100.0)
-                
-                Spacer()
                 
                 ///完了ボタン
                 Button("ボタン",action: {
