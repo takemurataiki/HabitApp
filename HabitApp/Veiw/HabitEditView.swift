@@ -11,6 +11,7 @@ struct HabitEditView: View {
 
     @State var selectedColor = 0
     @State var colorName = ["Red","Blue","Green","Yellow","Purple"]
+    @State var selectedColors: Color?
 
 //    @ObservedObject var newList = NewList()
     @EnvironmentObject var newList: NewList
@@ -54,19 +55,24 @@ struct HabitEditView: View {
                                         textColor: .blue,
                                         textFont: .system(size: 15, weight: .black, design: .default))
                                         .frame(width: 10, height: 10)
-                                    
-                                    Text(colorName[index])
-                                        .tag(index)
-                                        .padding(.leading)
+
+
                                 }
-                            }
-                            Form {
-                                ///カテゴリーの生成画面
                             }
                         }
                         .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                        
+
+
                     }.frame(height: 150.0)
+
+                
+                    HStack {
+                        ForEach(newList.colors, id:  \.description) { color in
+                                CheckBox(selectedColor: self.$selectedColors, color: color)
+                        }.padding(.all)
+                            
+                    }
+                    
                 
                 
                     
@@ -82,6 +88,7 @@ struct HabitEditView: View {
                     })
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     .border(Color.black)
+                
                     
                     Spacer()
                         

@@ -54,7 +54,7 @@ class NewList: ObservableObject {
     @Published var progress: Float = 0
     
     ///テーマ色
-    @Published var colors = [Color.red, Color.blue, Color.green,Color.yellow,Color.purple]
+    @Published var colors = [Color.purple, Color.red, Color.orange, Color.yellow, Color.green, Color.blue]
     
     
     
