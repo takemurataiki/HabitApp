@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct HabitEditView: View {
-
-    @State var selectedColors = 0
+    
     @State var colorName = ["Red","Blue","Green","Yellow","Purple"]
     @State var selectedColor: Color
 
@@ -24,11 +23,13 @@ struct HabitEditView: View {
         NavigationView {
             VStack {
                     
-                    Spacer()
-
                     Text("何を習慣にしたいですか？")
                         .font(.footnote)
+                        .fontWeight(.black)
                         .foregroundColor(.gray)
+                        .lineLimit(nil)
+                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                        
                     
                     ///テキスト書き込み
                     TextField("習慣を入れてください", text: $newList.newTitle)
@@ -41,18 +42,25 @@ struct HabitEditView: View {
                     TextField("補足メモ", text: .constant(""))
                         .frame(width: 250.0, height: 100.0)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                    
-                   
                 
+                    
+                    Text("テーマ色")
+                        .font(.footnote)
+                        .fontWeight(.black)
+                        .foregroundColor(.gray)
+                        
+                
+                    ///テーマカラー選択
                     HStack {
                         ForEach(newList.colors, id:  \.self) { index in
                             CheckBox(selectedColor: $selectedColor, color: index)
-                        }.padding(.all)
+                        }
+                        .padding([.top, .leading, .trailing], 10.0)
+                       
                             
                     }
+                    .frame(width: 250.0)
                     
-                
-                
                     
                     Spacer()
                     ///完了ボタン
@@ -67,10 +75,12 @@ struct HabitEditView: View {
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     .border(Color.black)
                 
+                
                     
                     Spacer()
                         
-                }
+            }
+            
             }
             
         }
