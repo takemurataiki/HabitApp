@@ -87,13 +87,9 @@ struct HabitEditView: View {
                     
                     Spacer()
                         
+                }
             }
-            
-            
-            }
-            
         }
-    
 }
 
 struct HabitEditView_Previews: PreviewProvider {
