@@ -42,33 +42,11 @@ struct HabitEditView: View {
                         .frame(width: 250.0, height: 100.0)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     
-                    ///色の選択
-                    Form {
-                        Picker(selection: $selectedColors, label: Text("カテゴリ")) {
-                            ForEach (0..<newList.colors.count) { index in
-                                HStack {
-                                    ProgressCircleVM(
-                                        progress: 1,
-                                        lineColor: newList.colors[index],
-                                        lineWidth: 10,
-                                        lineCap:.butt,
-                                        textColor: .blue,
-                                        textFont: .system(size: 15, weight: .black, design: .default))
-                                        .frame(width: 10, height: 10)
-
-
-                                }
-                            }
-                        }
-                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-
-
-                    }.frame(height: 150.0)
-
+                   
                 
                     HStack {
-                        ForEach(0..<newList.colors.count) { index in
-                            CheckBox(selectedColor: $selectedColor, color: newList.colors[index])
+                        ForEach(newList.colors, id:  \.self) { index in
+                            CheckBox(selectedColor: $selectedColor, color: index)
                         }.padding(.all)
                             
                     }
@@ -79,7 +57,7 @@ struct HabitEditView: View {
                     Spacer()
                     ///完了ボタン
                     Button("ボタン",action: {
-                        newList.listArray.append(ListData(title: newList.newTitle,count: 0,  color: newList.colors[selectedColors]))
+                        newList.listArray.append(ListData(title: newList.newTitle,count: 0,  color: selectedColor))
                         ///テキストの初期化
                         newList.newTitle = ""
                         ///前画面に戻る
