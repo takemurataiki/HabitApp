@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ColorButtonVM: View {
-    @State var selectedColor: Color?
+    @State var selectedColor: Color
     
     @EnvironmentObject var newList: NewList
     
@@ -27,7 +27,7 @@ struct ColorButtonVM: View {
 
 struct CheckBox: View {
 
-    @Binding var selectedColor: Color?
+    @Binding var selectedColor: Color
     var color: Color
 
     var body: some View {
@@ -46,7 +46,7 @@ struct CheckBox: View {
 
 struct ColorButtunVM_Previews: PreviewProvider {
     static var previews: some View {
-        ColorButtonVM()
+        ColorButtonVM(selectedColor: .purple)
             .environmentObject(NewList())
 
     }

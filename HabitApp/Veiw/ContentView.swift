@@ -21,7 +21,7 @@ struct ContentView: View {
                 HStack {
                     
                     ///習慣追加ボタン
-                    NavigationLink(destination: HabitEditView()){
+                    NavigationLink(destination: HabitEditView(selectedColor: .purple)){
                         Text("習慣追加ボタン")
                     }.padding(.all).border(Color.black)
                     

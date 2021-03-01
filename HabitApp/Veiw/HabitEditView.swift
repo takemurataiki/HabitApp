@@ -9,9 +9,9 @@ import SwiftUI
 
 struct HabitEditView: View {
 
-    @State var selectedColor = 0
+    @State var selectedColorNum = 0
     @State var colorName = ["Red","Blue","Green","Yellow","Purple"]
-    @State var selectedColors: Color?
+    @State var selectedColor: Color
 
 //    @ObservedObject var newList = NewList()
     @EnvironmentObject var newList: NewList
@@ -43,32 +43,32 @@ struct HabitEditView: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     
                     ///色の選択
-                    Form {
-                        Picker(selection: $selectedColor, label: Text("カテゴリ")) {
-                            ForEach (0..<newList.colors.count) { index in
-                                HStack {
-                                    ProgressCircleVM(
-                                        progress: 1,
-                                        lineColor: newList.colors[index],
-                                        lineWidth: 10,
-                                        lineCap:.butt,
-                                        textColor: .blue,
-                                        textFont: .system(size: 15, weight: .black, design: .default))
-                                        .frame(width: 10, height: 10)
-
-
-                                }
-                            }
-                        }
-                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-
-
-                    }.frame(height: 150.0)
+//                    Form {
+//                        Picker(selection: $selectedColor, label: Text("カテゴリ")) {
+//                            ForEach (0..<newList.colors.count) { index in
+//                                HStack {
+//                                    ProgressCircleVM(
+//                                        progress: 1,
+//                                        lineColor: newList.colors[index],
+//                                        lineWidth: 10,
+//                                        lineCap:.butt,
+//                                        textColor: .blue,
+//                                        textFont: .system(size: 15, weight: .black, design: .default))
+//                                        .frame(width: 10, height: 10)
+//
+//
+//                                }
+//                            }
+//                        }
+//                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+//
+//
+//                    }.frame(height: 150.0)
 
                 
                     HStack {
-                        ForEach(newList.colors, id:  \.description) { color in
-                                CheckBox(selectedColor: self.$selectedColors, color: color)
+                        ForEach(0..<newList.colors.count) { index in
+                            CheckBox(selectedColor: $selectedColor, color: newList.colors[index])
                         }.padding(.all)
                             
                     }
@@ -79,7 +79,7 @@ struct HabitEditView: View {
                     Spacer()
                     ///完了ボタン
                     Button("ボタン",action: {
-                        newList.listArray.append(ListData(title: newList.newTitle,count: 0,  color: newList.colors[selectedColor]))
+                        newList.listArray.append(ListData(title: newList.newTitle,count: 0,  color: newList.colors[selectedColorNum]))
                         ///テキストの初期化
                         newList.newTitle = ""
                         ///前画面に戻る
@@ -101,7 +101,7 @@ struct HabitEditView: View {
 
 struct HabitEditView_Previews: PreviewProvider {
     static var previews: some View {
-        HabitEditView()
+        HabitEditView( selectedColor: .purple)
             .environmentObject(NewList())
             .environmentObject(CountHabit())
     }
