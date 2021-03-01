@@ -32,8 +32,9 @@ struct CheckBox: View {
 
     var body: some View {
         Button(action: { self.selectedColor = self.color }) {
-            Image(systemName: self.selectedColor == color ? "checkmark.circle.fill" : "circle.fill")
+            Image(systemName: self.selectedColor == color ? "largecircle.fill.circle" : "circle.fill")
                 .scaleEffect(1.5)
+                .opacity(0.8)
                 
                 
                 

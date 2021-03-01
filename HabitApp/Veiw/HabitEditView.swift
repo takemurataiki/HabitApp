@@ -39,12 +39,15 @@ struct HabitEditView: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     
                     ///テキスト書き込み
-                    TextField("補足メモ", text: .constant(""))
+                TextField("補足メモ", text: .constant(""))
+                    .padding(.bottom, 50.0)
                         .frame(width: 250.0, height: 100.0)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+                        
                 
                     
-                    Text("テーマ色")
+                
+                    Text("【 テーマ色 】")
                         .font(.footnote)
                         .fontWeight(.black)
                         .foregroundColor(.gray)
@@ -60,11 +63,12 @@ struct HabitEditView: View {
                             
                     }
                     .frame(width: 250.0)
-                    
+                    .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     
                     Spacer()
+                    
                     ///完了ボタン
-                    Button("ボタン",action: {
+                    Button("完了ボタン",action: {
                         newList.listArray.append(ListData(title: newList.newTitle,count: 0,  color: selectedColor))
                         ///テキストの初期化
                         newList.newTitle = ""
@@ -73,13 +77,18 @@ struct HabitEditView: View {
                         
                     })
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-                    .border(Color.black)
+                    .font(.title2)
+                    .foregroundColor(.white)
+                    .background(selectedColor.opacity(0.8))
+                    .cornerRadius(/*@START_MENU_TOKEN@*/15.0/*@END_MENU_TOKEN@*/)
+                
                 
                 
                     
                     Spacer()
                         
             }
+            
             
             }
             
