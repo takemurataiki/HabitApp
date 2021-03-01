@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HabitEditView: View {
 
-    @State var selectedColorNum = 0
+    @State var selectedColors = 0
     @State var colorName = ["Red","Blue","Green","Yellow","Purple"]
     @State var selectedColor: Color
 
@@ -43,27 +43,27 @@ struct HabitEditView: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     
                     ///色の選択
-//                    Form {
-//                        Picker(selection: $selectedColor, label: Text("カテゴリ")) {
-//                            ForEach (0..<newList.colors.count) { index in
-//                                HStack {
-//                                    ProgressCircleVM(
-//                                        progress: 1,
-//                                        lineColor: newList.colors[index],
-//                                        lineWidth: 10,
-//                                        lineCap:.butt,
-//                                        textColor: .blue,
-//                                        textFont: .system(size: 15, weight: .black, design: .default))
-//                                        .frame(width: 10, height: 10)
-//
-//
-//                                }
-//                            }
-//                        }
-//                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
-//
-//
-//                    }.frame(height: 150.0)
+                    Form {
+                        Picker(selection: $selectedColors, label: Text("カテゴリ")) {
+                            ForEach (0..<newList.colors.count) { index in
+                                HStack {
+                                    ProgressCircleVM(
+                                        progress: 1,
+                                        lineColor: newList.colors[index],
+                                        lineWidth: 10,
+                                        lineCap:.butt,
+                                        textColor: .blue,
+                                        textFont: .system(size: 15, weight: .black, design: .default))
+                                        .frame(width: 10, height: 10)
+
+
+                                }
+                            }
+                        }
+                        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+
+
+                    }.frame(height: 150.0)
 
                 
                     HStack {
@@ -79,7 +79,7 @@ struct HabitEditView: View {
                     Spacer()
                     ///完了ボタン
                     Button("ボタン",action: {
-                        newList.listArray.append(ListData(title: newList.newTitle,count: 0,  color: newList.colors[selectedColorNum]))
+                        newList.listArray.append(ListData(title: newList.newTitle,count: 0,  color: newList.colors[selectedColors]))
                         ///テキストの初期化
                         newList.newTitle = ""
                         ///前画面に戻る
