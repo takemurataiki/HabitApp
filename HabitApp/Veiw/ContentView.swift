@@ -18,14 +18,6 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                HStack {
-                    
-                    ///習慣追加ボタン
-                    NavigationLink(destination: HabitEditView(selectedColor: .purple)){
-                        Text("習慣追加ボタン")
-                    }.padding(.all).border(Color.black)
-                    
-                }
                 ///習慣リスト一覧
                 List {
                     ForEach(newList.listArray.indexed(), id: \.1.id) { index, habitData in
@@ -69,7 +61,21 @@ struct ContentView: View {
             }
             .navigationTitle("ContentView")
             .navigationBarTitleDisplayMode(.inline)
-            .navigationBarItems(trailing: EditButton())
+            .navigationBarItems(
+                leading:
+                    HStack {
+                        ///習慣追加ボタン
+                        NavigationLink(destination: HabitEditView(selectedColor: .purple)){
+                            Image(systemName: "plus.app.fill")
+                                .scaleEffect(2)
+                        }
+                        
+                    },
+                trailing:
+                    EditButton()
+            )
+            
+            
             
         }
         

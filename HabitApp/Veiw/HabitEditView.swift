@@ -24,26 +24,33 @@ struct HabitEditView: View {
             VStack {
                     
                     Text("何を習慣にしたいですか？")
-                        .font(.footnote)
+                        .font(.callout)
                         .fontWeight(.black)
                         .foregroundColor(.gray)
                         .lineLimit(nil)
                         .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                         
+                        
                     
                     ///テキスト書き込み
                     TextField("習慣を入れてください", text: $newList.newTitle)
-                        .frame(width: 250.0)
+                        .frame(width: 300.0, height: 80.0)
                         .font(.footnote)
                         .foregroundColor(.gray)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .cornerRadius(/*@START_MENU_TOKEN@*/10.0/*@END_MENU_TOKEN@*/)
+                        .shadow(radius: /*@START_MENU_TOKEN@*/6/*@END_MENU_TOKEN@*/)
+                        
+                        
                     
                     ///テキスト書き込み
                 TextField("補足メモ", text: .constant(""))
                     .padding(.bottom, 50.0)
-                        .frame(width: 250.0, height: 100.0)
+                        .frame(width: 300.0, height: 80.0)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                        
+                        .cornerRadius(/*@START_MENU_TOKEN@*/12.0/*@END_MENU_TOKEN@*/)
+                        .shadow(radius: /*@START_MENU_TOKEN@*/6/*@END_MENU_TOKEN@*/)
+                            
                 
                     
                 
@@ -81,13 +88,14 @@ struct HabitEditView: View {
                     .foregroundColor(.white)
                     .background(selectedColor.opacity(0.8))
                     .cornerRadius(/*@START_MENU_TOKEN@*/15.0/*@END_MENU_TOKEN@*/)
-                
+                    .shadow(radius: /*@START_MENU_TOKEN@*/6/*@END_MENU_TOKEN@*/)
                 
                 
                     
                     Spacer()
                         
                 }
+            
             }
         }
 }
