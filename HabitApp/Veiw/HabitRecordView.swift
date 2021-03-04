@@ -54,11 +54,10 @@ struct HabitRecordView: View {
                 Text("習慣完了ボタン")
             }
             .disabled(list.count >= 1)
-            .disabled(list.count <= 0)
             .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             .font(.title2)
             .foregroundColor(.white)
-            .background(newList.selectedColor.opacity(0.8))
+            .background(list.color.opacity(0.8))
             .cornerRadius(/*@START_MENU_TOKEN@*/15.0/*@END_MENU_TOKEN@*/)
             .shadow(radius: /*@START_MENU_TOKEN@*/6/*@END_MENU_TOKEN@*/)
         
@@ -75,7 +74,7 @@ struct HabitRecordView: View {
             .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
             .font(.title2)
             .foregroundColor(.white)
-            .background(newList.selectedColor.opacity(0.8))
+            .background(list.color.opacity(0.8))
             .cornerRadius(/*@START_MENU_TOKEN@*/15.0/*@END_MENU_TOKEN@*/)
             .shadow(radius: /*@START_MENU_TOKEN@*/6/*@END_MENU_TOKEN@*/)
         
