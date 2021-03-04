@@ -56,7 +56,7 @@ class NewList: ObservableObject {
     ///テーマ色
     @Published var colors = [Color.purple, Color.red, Color.orange, Color.yellow, Color.green, Color.blue]
     
-    
+    @Published var selectedColor: Color = .purple
     
     
     ///表示の切り替え

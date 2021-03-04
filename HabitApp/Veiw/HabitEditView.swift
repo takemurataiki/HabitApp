@@ -10,7 +10,7 @@ import SwiftUI
 struct HabitEditView: View {
     
     @State var colorName = ["Red","Blue","Green","Yellow","Purple"]
-    @State var selectedColor: Color
+    
 
 //    @ObservedObject var newList = NewList()
     @EnvironmentObject var newList: NewList
@@ -63,7 +63,7 @@ struct HabitEditView: View {
                     ///テーマカラー選択
                     HStack {
                         ForEach(newList.colors, id:  \.self) { index in
-                            CheckBox(selectedColor: $selectedColor, color: index)
+                            CheckBox(selectedColor: $newList.selectedColor, color: index)
                         }
                         .padding([.top, .leading, .trailing], 10.0)
                        
@@ -76,7 +76,7 @@ struct HabitEditView: View {
                     
                     ///完了ボタン
                     Button("完了ボタン",action: {
-                        newList.listArray.append(ListData(title: newList.newTitle,count: 0,  color: selectedColor))
+                        newList.listArray.append(ListData(title: newList.newTitle,count: 0,  color: newList.selectedColor))
                         ///テキストの初期化
                         newList.newTitle = ""
                         ///前画面に戻る
@@ -86,7 +86,7 @@ struct HabitEditView: View {
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     .font(.title2)
                     .foregroundColor(.white)
-                    .background(selectedColor.opacity(0.8))
+                    .background(newList.selectedColor.opacity(0.8))
                     .cornerRadius(/*@START_MENU_TOKEN@*/15.0/*@END_MENU_TOKEN@*/)
                     .shadow(radius: /*@START_MENU_TOKEN@*/6/*@END_MENU_TOKEN@*/)
                 
@@ -102,7 +102,7 @@ struct HabitEditView: View {
 
 struct HabitEditView_Previews: PreviewProvider {
     static var previews: some View {
-        HabitEditView( selectedColor: .purple)
+        HabitEditView()
             .environmentObject(NewList())
             .environmentObject(CountHabit())
     }

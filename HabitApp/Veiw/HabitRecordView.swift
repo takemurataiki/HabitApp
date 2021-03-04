@@ -12,7 +12,7 @@ struct HabitRecordView: View {
     
     
     
-//    @EnvironmentObject var newList: NewList
+    @EnvironmentObject var newList: NewList
     
     @Environment(\.presentationMode) var presentation
     
@@ -51,8 +51,17 @@ struct HabitRecordView: View {
                 presentation.wrappedValue.dismiss()
                         
                     }) {
-                Text("習慣追加ボタン")
-            }.disabled(list.count >= 1)
+                Text("習慣完了ボタン")
+            }
+            .disabled(list.count >= 1)
+            .disabled(list.count <= 0)
+            .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            .font(.title2)
+            .foregroundColor(.white)
+            .background(newList.selectedColor.opacity(0.8))
+            .cornerRadius(/*@START_MENU_TOKEN@*/15.0/*@END_MENU_TOKEN@*/)
+            .shadow(radius: /*@START_MENU_TOKEN@*/6/*@END_MENU_TOKEN@*/)
+        
             
             ///習慣取消しボタン
             Button(action:{
@@ -61,7 +70,15 @@ struct HabitRecordView: View {
                 
                         }) {
                 Text("習慣取消しボタン")
-            }.disabled(list.count <= 0)
+            }
+            .disabled(list.count <= 0)
+            .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+            .font(.title2)
+            .foregroundColor(.white)
+            .background(newList.selectedColor.opacity(0.8))
+            .cornerRadius(/*@START_MENU_TOKEN@*/15.0/*@END_MENU_TOKEN@*/)
+            .shadow(radius: /*@START_MENU_TOKEN@*/6/*@END_MENU_TOKEN@*/)
+        
             
             
             
@@ -73,7 +90,7 @@ struct HabitRecordView: View {
 struct HabitRecordView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            HabitRecordView(list: .constant(ListData(title:"起床",count: 0.3,color: .blue)))
+            HabitRecordView(list: .constant(ListData(title:"起床",count: 0.3,color: .purple)))
                 .environmentObject(NewList())
             
         }

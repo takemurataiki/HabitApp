@@ -65,7 +65,7 @@ struct ContentView: View {
                 leading:
                     HStack {
                         ///習慣追加ボタン
-                        NavigationLink(destination: HabitEditView(selectedColor: .purple)){
+                        NavigationLink(destination: HabitEditView()){
                             Image(systemName: "plus.app.fill")
                                 .scaleEffect(2)
                         }
