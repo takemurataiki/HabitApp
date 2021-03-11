@@ -20,7 +20,7 @@ struct ContentView: View {
                 ///習慣リスト一覧
                 List (){
                         ForEach(newList.listArray.indexed(), id: \.1.id) { index, habitData in
-                            NavigationLink(destination: HabitRecordView(list: $newList.listArray[index])
+                            NavigationLink(destination: HabitRecordView(index: index, list: $newList.listArray[index])
                             ) {
                                 ///グラフ
                                 ZStack {
@@ -76,11 +76,7 @@ struct ContentView: View {
             .navigationBarItems(
                 leading:
                     HStack {
-                        ///習慣追加ボタン
-                        NavigationLink(destination: HabitEditView(selectedColor: .purple)){
-                            Image(systemName: "plus.app")
-                                .scaleEffect(1.8)
-                        }
+                        
                     },
                 trailing:
                     EditButton()
