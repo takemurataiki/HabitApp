@@ -76,7 +76,7 @@ struct HabitEditView: View {
                     
                     ///完了ボタン
                     Button("完了ボタン",action: {
-                        newList.listArray.append(ListData(title: newList.newTitle,count: 0,  color: selectedColor))
+                        newList.listArray.append(ListData(title: newList.newTitle,count: 0,  color: selectedColor, timeStamp: "", isShow: false))
                         ///テキストの初期化
                         newList.newTitle = ""
                         ///前画面に戻る

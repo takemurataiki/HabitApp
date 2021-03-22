@@ -15,14 +15,16 @@ struct ListData: Identifiable {
     var title: String
     var count: Float
     var color: Color
+    var timeStamp: String
+    var isShow: Bool
     
     
 }
 
 func makeData() -> [ListData] {
     var dataArray:[ListData] = []
-    dataArray.append(ListData(title:"起床",count: 12/360,color: Color.red))
-    dataArray.append(ListData(title:"朝食",count: 24/360,color: Color.blue))
+    dataArray.append(ListData(title:"起床",count: 12/360,color: Color.red,timeStamp: "",isShow: false))
+    dataArray.append(ListData(title:"朝食",count: 24/360,color: Color.blue,timeStamp: "",isShow: false))
     
     
     return dataArray
@@ -57,6 +59,25 @@ class NewList: ObservableObject {
     @Published var colors = [Color.purple, Color.red, Color.orange, Color.yellow, Color.green, Color.blue]
     
     @Published var selectedColor: Color = .purple
+    
+    
+    ///達成時刻初期値
+    @Published var newTimeStamp = ""
+    
+    @Published var date = Date()
+    
+    var dateFormat1: DateFormatter {
+        let df = DateFormatter()
+        df.locale = Locale(identifier: "jp-JP")
+        df.dateStyle = .full
+        df.timeStyle = .short
+        df.calendar = Calendar(identifier: .japanese)
+        df.dateFormat = "M/dd"
+        return df
+    }
+    
+    
+    
     
     
     ///表示の切り替え

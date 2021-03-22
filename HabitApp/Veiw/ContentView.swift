@@ -40,6 +40,7 @@ struct ContentView: View {
                                         .font(.system(size: 25, weight: .black, design: .default))
                                         .foregroundColor(habitData.color)
                                     
+                                    
                                 }
                                 
                                 ///タイトル
