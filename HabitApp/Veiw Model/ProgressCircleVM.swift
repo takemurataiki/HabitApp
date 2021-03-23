@@ -31,15 +31,16 @@ struct ProgressCircleVM: View {
             Circle()
                 .stroke(lineColor, lineWidth: lineWidth)
                 .opacity(0.2)
+                
             
             // 進捗の円
             Circle()
                 .trim(from: 0, to: CGFloat(min(progress,1.0))) // 線の長さを指定
                 .stroke(lineColor, style: StrokeStyle(lineWidth: lineWidth,lineCap: lineCap))
                 .rotationEffect(.degrees(-90.0)) // 線を上から開始させる
-//                .animation(.easeOut) // 線をAnimationさせる
-            
-            
+//                .animation(.easeInOut) // 線をAnimationさせる
+//                .transition(.identity)
+                
         }
     }
 }

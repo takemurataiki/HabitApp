@@ -32,6 +32,7 @@ struct HabitRecordView: View {
                                            textColor: list.color,
                                            textFont: .system(size: 25, weight: .black, design: .default))
                             .padding(/*@START_MENU_TOKEN@*/.all, 40.0/*@END_MENU_TOKEN@*/)
+//                            .animation(.default).animation(.default) // 線をAnimationさせる
                         VStack {
                             Text(list.title)
                                 .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -80,6 +81,7 @@ struct HabitRecordView: View {
                     .background(list.isShow ? Color.gray : list.color.opacity(0.8))
                     .shadow(radius: /*@START_MENU_TOKEN@*/6/*@END_MENU_TOKEN@*/)
                     
+                    
                     Spacer()
                     
                     
@@ -94,13 +96,15 @@ struct HabitRecordView: View {
                 ///習慣取消しボタン
                 Button(action:{
                     list.count -= 12/360
-                    presentation.wrappedValue.dismiss()
+                    list.isShow = false
+                    list.timeStamp = newList.newTimeStamp
+//                    presentation.wrappedValue.dismiss()
                     
                             }) {
                     Image(systemName: "slash.circle")
                         .scaleEffect(1.5)
                 }
-                .disabled(list.count <= 0)
+                .disabled(list.count <= 0 || list.timeStamp == newList.newTimeStamp)
                 
         )
     }

@@ -35,6 +35,7 @@ struct ContentView: View {
                                         .frame(width:60, height: 60)
                                         .padding()
                                     
+                                    
                                     /// パーセント表示
                                     Text("\(Int((min(Double(habitData.count), 1.0) * 100)/3.3))")
                                         .font(.system(size: 25, weight: .black, design: .default))
