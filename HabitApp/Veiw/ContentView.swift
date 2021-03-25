@@ -18,7 +18,7 @@ struct ContentView: View {
         NavigationView {
             ZStack (alignment: .bottomTrailing){
                 ///習慣リスト一覧
-                List (){
+                List {
                         ForEach(newList.listArray.indexed(), id: \.1.id) { index, habitData in
                             NavigationLink(destination: HabitRecordView(index: index, list: $newList.listArray[index])
                             ) {
@@ -61,6 +61,9 @@ struct ContentView: View {
                         .onMove(perform: newList.rowReplace)
                         
                     }
+                ///謎の空白を埋める
+                .listStyle(PlainListStyle())
+                
                 
                 ///習慣追加ボタン
                 NavigationLink(destination: HabitEditView(selectedColor: .purple)){
@@ -72,9 +75,10 @@ struct ContentView: View {
                 }
                 
                 
+                
             }
-            .navigationTitle("ContentView")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarTitle("習慣リスト", displayMode: .inline)
+            
             .navigationBarItems(
                 leading:
                     HStack {
@@ -82,7 +86,8 @@ struct ContentView: View {
                     },
                 trailing:
                     EditButton()
-        )
+            )
+            
             
             
             

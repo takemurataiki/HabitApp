@@ -34,7 +34,22 @@ struct HabitEditView: View {
                         
                     
                     ///テキスト書き込み
-                    TextField("習慣を入れてください", text: $newList.newTitle)
+                    TextField("習慣を入れてください", text: $newList.newTitle,
+                              
+                          /// リターンキーが押された時の処理
+                              onEditingChanged: { isShow in
+                                /// 入力開始処理
+                                if isShow {
+                                    newList.countCheck()
+                                }
+                                /// 入力終了処理
+                                else {
+                                    newList.countCheck()
+
+                                }
+
+                          }
+                    )
                         .frame(width: 300.0, height: 80.0)
                         .font(.footnote)
                         .foregroundColor(.gray)
@@ -43,18 +58,15 @@ struct HabitEditView: View {
                         .shadow(radius: /*@START_MENU_TOKEN@*/6/*@END_MENU_TOKEN@*/)
                 
                 
-                        
-                        
-                    
-                    ///テキスト書き込み
-                TextField("補足メモ", text: .constant(""))
-                    .padding(.bottom, 50.0)
-                        .frame(width: 300.0, height: 80.0)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .cornerRadius(/*@START_MENU_TOKEN@*/12.0/*@END_MENU_TOKEN@*/)
-                        .shadow(radius: /*@START_MENU_TOKEN@*/6/*@END_MENU_TOKEN@*/)
-                            
-                
+//                    ///テキスト書き込み
+//                TextField("補足メモ", text: .constant(""))
+//                    .padding(.bottom, 50.0)
+//                        .frame(width: 300.0, height: 80.0)
+//                        .textFieldStyle(RoundedBorderTextFieldStyle())
+//                        .cornerRadius(/*@START_MENU_TOKEN@*/12.0/*@END_MENU_TOKEN@*/)
+//                        .shadow(radius: /*@START_MENU_TOKEN@*/6/*@END_MENU_TOKEN@*/)
+//
+//
                     
                 
                     Text("【 テーマ色 】")
@@ -69,8 +81,6 @@ struct HabitEditView: View {
                             CheckBox(selectedColor: $selectedColor, color: index)
                         }
                         .padding([.top, .leading, .trailing], 10.0)
-                       
-                            
                     }
                     .frame(width: 250.0)
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
@@ -78,24 +88,32 @@ struct HabitEditView: View {
                     Spacer()
                     
                     ///完了ボタン
-                    Button("完了ボタン",action: {
+                    Button(action: {
                         newList.listArray.append(ListData(title: newList.newTitle,count: 0,  color: selectedColor, timeStamp: "", isShow: false))
                         ///テキストの初期化
                         newList.newTitle = ""
                         ///前画面に戻る
                         presentation.wrappedValue.dismiss()
                         
-                    })
+                        
+                    }){
+                        Image(systemName: "checkmark.rectangle.fill")
+                    }
+                    .disabled(newList.newTitle.count < 1 || newList.newTitle.count > 30)
                     .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                     .font(.title2)
-                    .foregroundColor(.white)
-                    .background(selectedColor.opacity(0.8))
                     .cornerRadius(/*@START_MENU_TOKEN@*/15.0/*@END_MENU_TOKEN@*/)
                     .shadow(radius: /*@START_MENU_TOKEN@*/6/*@END_MENU_TOKEN@*/)
+                    .accentColor(selectedColor.opacity(0.8))
+                    .scaleEffect(2.5)
+                
+                Spacer()
+                    
+                    
                 
                 
                     
-                    Spacer()
+                    
                         
                 }
             

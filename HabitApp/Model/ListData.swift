@@ -36,6 +36,8 @@ extension Collection {
     return Array(self.enumerated())
   }
     
+    
+    
 }
 
 
@@ -86,6 +88,18 @@ class NewList: ObservableObject {
     func rowReplace(_ from: IndexSet, _ to: Int) {
             listArray.move(fromOffsets: from, toOffset: to)
         }
+    
+    ///文字数チェック
+    func countCheck() {
+        if (newTitle.count < 1 || newTitle.count > 30) {
+            isShow = true
+
+        }
+        else {
+            isShow = false
+        }
+    }
+    
     
     
     
