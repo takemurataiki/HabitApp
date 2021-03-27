@@ -44,6 +44,10 @@ struct HabitRecordView: View {
                                 .foregroundColor(list.color)
                             
                             Text(list.timeStamp)
+                                .font(.callout)
+                                .fontWeight(.black)
+                                .foregroundColor(.gray)
+                                .lineLimit(nil)
                                 .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
                         }
                         .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)

@@ -13,6 +13,8 @@ struct ContentView: View {
     
 //    @ObservedObject var newList:NewList
     @EnvironmentObject var newList: NewList
+    
+    
 
     var body: some View {
         NavigationView {
@@ -65,14 +67,17 @@ struct ContentView: View {
                 .listStyle(PlainListStyle())
                 
                 
+                
                 ///習慣追加ボタン
                 NavigationLink(destination: HabitEditView(selectedColor: .purple)){
                     Image(systemName: "plus.circle.fill")
                         .scaleEffect(4)
-                        .padding([.bottom, .trailing], 70.0)
+                        .frame(width: 100, height: 100, alignment: .center)
+                        
                         
                     
                 }
+                .padding([.bottom, .trailing],25)
                 
                 
                 
