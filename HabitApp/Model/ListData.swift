@@ -8,17 +8,15 @@
 import Foundation
 import SwiftUI
 
-
-var listArray:[ListData] = makeData()
-
 struct ListData: Identifiable {
-    var id = UUID()
+    let id = UUID()
 //    {
 //        didSet
 //        {
 //                    UserDefaults.standard.set(id, forKey: "id")
 //                }
 //    }
+    
     var title: String
 //    {
 //        didSet {
@@ -65,10 +63,8 @@ struct ListData: Identifiable {
 //
 //    }
 
-     
-    
-   
 }
+
 
 func makeData() -> [ListData] {
     var dataArray:[ListData] = []
@@ -78,18 +74,5 @@ func makeData() -> [ListData] {
     
     return dataArray
 }
-
-
-extension Collection {
-  func indexed() -> Array<(offset: Int, element: Element)> {
-    return Array(self.enumerated())
-  }
-    
-
-    
-    
-}
-
-
 
 

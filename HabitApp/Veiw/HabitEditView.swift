@@ -124,6 +124,6 @@ struct HabitEditView_Previews: PreviewProvider {
     static var previews: some View {
         HabitEditView( selectedColor: .purple)
             .environmentObject(NewList())
-            .environmentObject(CountHabit())
+            
     }
 }
