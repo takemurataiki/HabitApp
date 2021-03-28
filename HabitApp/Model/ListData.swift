@@ -11,38 +11,47 @@ import SwiftUI
 var listArray:[ListData] = makeData()
 
 struct ListData: Identifiable {
-    var id = UUID() {
-        didSet {
-                    UserDefaults.standard.set(id, forKey: "id")
-                }
-    }
-    var title: String {
-        didSet {
-                    UserDefaults.standard.set(title, forKey: "title")
-                }
-    }
+    var id = UUID()
+//    {
+//        didSet
+//        {
+//                    UserDefaults.standard.set(id, forKey: "id")
+//                }
+//    }
+    var title: String
+//    {
+//        didSet {
+//                    UserDefaults.standard.set(title, forKey: "title")
+//                }
+//    }
     
-    var count: Float {
-        didSet {
-                    UserDefaults.standard.set(count, forKey: "count")
-                }
-    }
-    var color: Color {
-        didSet {
-                    UserDefaults.standard.set(color, forKey: "color")
-                }
-    }
+    var count: Float
+//    {
+//        didSet {
+//                    UserDefaults.standard.set(count, forKey: "count")
+//                }
+//    }
     
-    var timeStamp: String {
-        didSet {
-                    UserDefaults.standard.set(timeStamp, forKey: "timeStamp")
-                }
-    }
-    var isShow: Bool {
-        didSet {
-                    UserDefaults.standard.set(isShow, forKey: "isShow")
-                }
-    }
+    var color: Color
+//    {
+//        didSet {
+//                    UserDefaults.standard.set(color, forKey: "color")
+//                }
+//    }
+    
+    var timeStamp: String
+//    {
+//        didSet {
+//                    UserDefaults.standard.set(timeStamp, forKey: "timeStamp")
+//                }
+//    }
+    
+    var isShow: Bool
+//    {
+//        didSet {
+//                    UserDefaults.standard.set(isShow, forKey: "isShow")
+//                }
+//    }
 //    title:String = "起床",count:Float = 12/360,color: Color = Color.red,timeStamp: String = "",isShow: Bool = false
 
 //    init(title:String = "起床",count:Float = 12/360,color: Color = Color.red,timeStamp: String = "",isShow: Bool = false) {
@@ -86,66 +95,80 @@ extension Collection {
 class NewList: ObservableObject {
     
     ///リストの配列
-    @Published var listArray:[ListData] = makeData() {
-        didSet {
-                    UserDefaults.standard.set(listArray, forKey: "listArray")
-                }
-    }
+    @Published var listArray:[ListData] = makeData()
+//    {
+//        didSet {
+//                    UserDefaults.standard.set(listArray, forKey: "listArray")
+//                }
+//    }
 
     ///タイトル
-    @Published var titles: [String] = [] {
-        didSet {
-                    UserDefaults.standard.set(titles, forKey: "titles")
-                }
-    }
-    
+    @Published var titles: [String] = []
+//    {
+//        didSet {
+//                    UserDefaults.standard.set(titles, forKey: "titles")
+//                }
+//    }
+//
     /// サブタイトル
-    @Published var subTitles: [String] = [] {
-        didSet {
-                    UserDefaults.standard.set(subTitles, forKey: "subTitles")
-                }
-    }
+    @Published var subTitles: [String] = []
+//    {
+//        didSet {
+//                    UserDefaults.standard.set(subTitles, forKey: "subTitles")
+//                }
+//    }
     ///テキスト初期化
-    @Published var newTitle = "" {
-        didSet {
-                    UserDefaults.standard.set(newTitle, forKey: "newTitle")
-                }
-    }
+    @Published var newTitle = ""
+//    {
+//        didSet {
+//                    UserDefaults.standard.set(newTitle, forKey: "newTitle")
+//                }
+//    }
     
     /// 進捗
-    @Published var progress: Float = 0 {
-        didSet {
-                    UserDefaults.standard.set(progress, forKey: "progress")
-                }
-    }
+    @Published var progress: Float = 0
+//    {
+//        didSet {
+//                    UserDefaults.standard.set(progress, forKey: "progress")
+//                }
+//    }
     
     ///テーマ色
-    @Published var colors = [Color.purple, Color.red, Color.orange, Color.yellow, Color.green, Color.blue] {
-        didSet {
-                    UserDefaults.standard.set(colors, forKey: "colors")
-                }
-    }
-    
-    @Published var selectedColor: Color = .purple {
-        didSet {
-                    UserDefaults.standard.set(selectedColor, forKey: "selectedColor")
-                }
-    }
+    @Published var colors = [Color.purple, Color.red, Color.orange, Color.yellow, Color.green, Color.blue]
+//    {
+//        didSet {
+//                    UserDefaults.standard.set(colors, forKey: "colors")
+//                }
+//    }
+//
+    @Published var selectedColor: Color = .purple
+//    {
+//        didSet {
+////                    UserDefaults.standard.set(selectedColor, forKey: "selectedColor")
+//            if let components = selectedColor.cgColor?.components {
+//                UserDefaults.standard.setValue(components[0], forKey: "RColor")
+//                UserDefaults.standard.setValue(components[1], forKey: "GColor")
+//                UserDefaults.standard.setValue(components[2], forKey: "BColor")
+//                    }
+//                }
+//    }
     
     
     ///達成時刻初期値
-    @Published var newTimeStamp = "" {
-        didSet {
-                    UserDefaults.standard.set(newTimeStamp, forKey: "newTimeStamp")
-                }
-    }
-    
-    @Published var date = Date() {
-        didSet {
-                    UserDefaults.standard.set(date, forKey: "date")
-                }
-    }
-    
+    @Published var newTimeStamp = ""
+//    {
+//        didSet {
+//                    UserDefaults.standard.set(newTimeStamp, forKey: "newTimeStamp")
+//                }
+//    }
+//
+    @Published var date = Date()
+//    {
+//        didSet {
+//                    UserDefaults.standard.set(date, forKey: "date")
+//                }
+//    }
+//
     var dateFormat1: DateFormatter {
         let df = DateFormatter()
         df.locale = Locale(identifier: "jp-JP")
@@ -161,15 +184,16 @@ class NewList: ObservableObject {
     
     
     ///表示の切り替え
-    @Published var isShow: Bool = false {
-        
-        didSet {
-                    UserDefaults.standard.set(isShow, forKey: "isShow")
-                }
-    }
+    @Published var isShow: Bool = false
+//    {
+//
+//        didSet {
+//                    UserDefaults.standard.set(isShow, forKey: "isShow")
+//                }
+//    }
     
     ///foreachの引数を二つ取るための機能
-    func rowReplace(_ from: IndexSet, _ to: Int) {
+    func rowReplace(_ from: IndexSet, _ to: Int){
             listArray.move(fromOffsets: from, toOffset: to)
         }
     

@@ -10,7 +10,6 @@ import Combine
 
 struct HabitEditView: View {
     
-    @State var colorName = ["Red","Blue","Green","Yellow","Purple"]
     @State var selectedColor: Color
 
 //    @ObservedObject var newList = NewList()
