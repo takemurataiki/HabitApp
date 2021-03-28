@@ -13,6 +13,7 @@ struct ContentView: View {
     
 //    @ObservedObject var newList:NewList
     @EnvironmentObject var newList: NewList
+
     
     
 
