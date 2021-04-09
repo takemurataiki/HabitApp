@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2306A17225CA617A00143799 /* HabitRecordData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2306A17125CA617A00143799 /* HabitRecordData.swift */; };
 		2336192925D5444C006C25E3 /* HabitRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2336192825D5444C006C25E3 /* HabitRecordView.swift */; };
 		236B758326104E080076FB12 /* NewList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236B758226104E080076FB12 /* NewList.swift */; };
+		236B758F261834440076FB12 /* ColorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 236B758E261834440076FB12 /* ColorData.swift */; };
 		2376FD212609E3B400C9A21C /* SendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2376FD202609E3B400C9A21C /* SendButton.swift */; };
 		2392FB4625E76C73009164B2 /* ProgressCircleVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2392FB4525E76C73009164B2 /* ProgressCircleVM.swift */; };
 		239318F025C372B400C3796B /* HabitEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 239318EF25C372B400C3796B /* HabitEditView.swift */; };
@@ -22,9 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2306A17125CA617A00143799 /* HabitRecordData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitRecordData.swift; sourceTree = "<group>"; };
 		2336192825D5444C006C25E3 /* HabitRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitRecordView.swift; sourceTree = "<group>"; };
 		236B758226104E080076FB12 /* NewList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewList.swift; sourceTree = "<group>"; };
+		236B758E261834440076FB12 /* ColorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorData.swift; sourceTree = "<group>"; };
 		2376FD202609E3B400C9A21C /* SendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendButton.swift; sourceTree = "<group>"; };
 		2392FB4525E76C73009164B2 /* ProgressCircleVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircleVM.swift; sourceTree = "<group>"; };
 		239318EF25C372B400C3796B /* HabitEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitEditView.swift; sourceTree = "<group>"; };
@@ -53,8 +53,8 @@
 			isa = PBXGroup;
 			children = (
 				239318F525C3C10300C3796B /* ListData.swift */,
-				2306A17125CA617A00143799 /* HabitRecordData.swift */,
 				236B758226104E080076FB12 /* NewList.swift */,
+				236B758E261834440076FB12 /* ColorData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -193,8 +193,8 @@
 				239318F325C3A56500C3796B /* ColorButtonVM.swift in Sources */,
 				23F8833925C048AB00FC73C2 /* HabitAppApp.swift in Sources */,
 				236B758326104E080076FB12 /* NewList.swift in Sources */,
+				236B758F261834440076FB12 /* ColorData.swift in Sources */,
 				239318F625C3C10300C3796B /* ListData.swift in Sources */,
-				2306A17225CA617A00143799 /* HabitRecordData.swift in Sources */,
 				2392FB4625E76C73009164B2 /* ProgressCircleVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

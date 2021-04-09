@@ -138,6 +138,18 @@ class NewList: ObservableObject {
 //        self.isShow = UserDefaults.standard.bool(forKey: "isShow")
 
 //    }
+    /// ①変換対象プロパティ指定
+        enum CodingKeys: CodingKey {
+            case listArray
+            
+        }
+    
+//    /// ②プロパティのdecode（復号化）アクション
+//        required init(from decoder: Decoder) throws {
+//            let container = try decoder.container(keyedBy: CodingKeys.self)
+//            listArray = try container.decode([ListData].self, forKey: listArray)
+//
+//        }
 
 }
 
