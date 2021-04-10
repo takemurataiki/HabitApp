@@ -10,8 +10,6 @@ import SwiftUI
 struct ContentView: View {
     
     @State var count:Int = 0
-    
-//    @ObservedObject var newList:NewList
     @EnvironmentObject var newList: NewList
 
     

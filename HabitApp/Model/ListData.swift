@@ -8,116 +8,26 @@
 import Foundation
 import SwiftUI
 
-struct ListData: Identifiable, Codable {
-    
-        
+struct ListData: Codable,Identifiable {
     var id = UUID()
-//    {
-//        didSet
-//        {
-//                    UserDefaults.standard.set(id, forKey: "id")
-//                }
-//    }
-
     var title: String
-//    {
-//        didSet {
-//                    UserDefaults.standard.set(title, forKey: "title")
-//                }
-//    }
-    
     var count: Float
-//    {
-//        didSet {
-//                    UserDefaults.standard.set(count, forKey: "count")
-//                }
-//    }
-    
     var color: Color
-//    {
-//        didSet {
-//                    UserDefaults.standard.set(color, forKey: "color")
-//                }
-//    }
-    
-    
     var timeStamp: String
-//    {
-//        didSet {
-//                    UserDefaults.standard.set(timeStamp, forKey: "timeStamp")
-//                }
-//    }
-//
     var isShow: Bool
-//    {
-//        didSet {
-//                    UserDefaults.standard.set(isShow, forKey: "isShow")
-//                }
-//    }
-    
-//    title:String = "起床",count:Float = 12/360,color: Color = Color.red,timeStamp: String = "",isShow: Bool = false
 
-//    init(title:String ,count:Float ,color: Color ,timeStamp: String ,isShow: Bool) {
-//
-//        self.title = UserDefaults.standard.string(forKey: "title") ?? ""
-//        self.count = UserDefaults.standard.float(forKey: "count")
-//        self.color = UserDefaults.standard.object(forKey: "color") as? Color ?? Color.purple
-//        self.timeStamp = UserDefaults.standard.string(forKey: "timeStamp") ?? ""
-//        self.isShow = UserDefaults.standard.bool(forKey: "isShow")
-//
-//    }
-    
-    
-    
     init(title:String ,count:Float ,color: Color ,timeStamp: String ,isShow: Bool) {
-
         self.title = title
         self.color = color
         self.count = count
         self.timeStamp = timeStamp
         self.isShow = isShow
-
-        
-    }
-    
-    
-}
-
-
-
-func ListDataSave() {
-    /// 保存
-    let valueToSave = ListData(title: "", count: 0, color: .purple, timeStamp: "", isShow: false)
-    let encoder = JSONEncoder()
-    if let encodedValue = try? encoder.encode(valueToSave) {
-        UserDefaults.standard.set(encodedValue, forKey: "ListData")
-    }
-    
-    /// 読み込み
-    if let savedValue = UserDefaults.standard.data(forKey: "ListData") {
-        
-        let decoder = JSONDecoder()
-        if let value = try? decoder.decode([ListData].self, from: savedValue) {
-            print(value)    // User(name: "capibara", age: 20)
-        }
-    } else {
-        /// 値がない場合の処理
-        print("Error")
     }
     
 }
 
-extension NewList {
-    
-}
-
-
-
-
-
-
+///Codable対応変換
 extension ListData {
-    ///Codable対応変換
         /// ①変換対象プロパティ指定
             enum CodingKeys: CodingKey {
                 case id
@@ -152,16 +62,24 @@ extension ListData {
     
 }
 
-
 func makeData() -> [ListData] {
     var dataArray:[ListData] = []
+//    {
+//        didSet {
+//            UserDefaults.standard.setEncoded(dataArray, forKey: "dataArray")
+//        }
+//    }
     dataArray.append(ListData(title:"起床",count: 12/360,color: Color.red,timeStamp: "",isShow: false))
     dataArray.append(ListData(title:"朝食",count: 24/360,color: Color.blue,timeStamp: "",isShow: false))
+    
+//    UserDefaults.standard.setEncoded(dataArray, forKey: "dataArray")
+//    dataArray = UserDefaults.standard.decodedObject([ListData].self, forKey: "dataArray") ?? []
     
     
     return dataArray
 }
 
+///UIColor -> Color
 struct ColorData : Codable {
     var red : CGFloat = 0.0
     var green: CGFloat = 0.0
@@ -176,4 +94,24 @@ struct ColorData : Codable {
         uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
     }
 }
+
+extension UserDefaults {
+  func setEncoded<T: Encodable>(_ value: T, forKey key: String) {
+    guard let data = try? JSONEncoder().encode(value) else {
+       print("Can not Encode to JSON.")
+       return
+    }
+
+    set(data, forKey: key)
+  }
+
+  func decodedObject<T: Decodable>(_ type: T.Type, forKey key: String) -> T? {
+    guard let data = data(forKey: key) else {
+      return nil
+    }
+
+    return try? JSONDecoder().decode(type, from: data)
+  }
+}
+
 
