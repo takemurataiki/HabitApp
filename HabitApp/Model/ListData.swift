@@ -44,7 +44,7 @@ extension ListData {
                 id = try container.decode(UUID.self, forKey: .id)
                 title = try container.decode(String.self, forKey: .title)
                 count = try container.decode(Float.self, forKey: .count)
-                color = try container.decode(Colors.self, forKey: .color).uiColor
+                color = try container.decode(Color.self, forKey: .color)
                 timeStamp = try container.decode(String.self, forKey: .timeStamp)
                 isShow = try container.decode(Bool.self, forKey: .isshow)
             }
@@ -55,8 +55,9 @@ extension ListData {
                 try container.encode(id, forKey: .id)
                 try container.encode(title, forKey: .title)
                 try container.encode(count, forKey: .count)
-                try container.encode(Colors(uiColor: color), forKey: .color)
+                try container.encode(color, forKey: .color)
                 try container.encode(timeStamp, forKey: .timeStamp)
+                try container.encode(isShow, forKey: .isshow)
                 
             }
     
@@ -79,23 +80,10 @@ func makeData() -> [ListData] {
     return dataArray
 }
 
-///UIColor -> Color
-struct ColorData : Codable {
-    var red : CGFloat = 0.0
-    var green: CGFloat = 0.0
-    var blue: CGFloat = 0.0
-    var alpha: CGFloat = 0.0
 
-    var uiColor : UIColor {
-        return UIColor(red: red, green: green, blue: blue, alpha: alpha)
-    }
-
-    init(uiColor : UIColor) {
-        uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-    }
-}
 
 extension UserDefaults {
+    ///保存
   func setEncoded<T: Encodable>(_ value: T, forKey key: String) {
     guard let data = try? JSONEncoder().encode(value) else {
        print("Can not Encode to JSON.")
@@ -105,6 +93,7 @@ extension UserDefaults {
     set(data, forKey: key)
   }
 
+    ///取り出し
   func decodedObject<T: Decodable>(_ type: T.Type, forKey key: String) -> T? {
     guard let data = data(forKey: key) else {
       return nil

@@ -39,49 +39,58 @@ struct Colors : Codable {
     }
 }
 
+fileprivate extension Color {
+    #if os(macOS)
+    typealias SystemColor = NSColor
+    #else
+    typealias SystemColor = UIColor
+    #endif
+    
+    var colorComponents: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)? {
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
+        
+        #if os(macOS)
+        SystemColor(self).getRed(&r, green: &g, blue: &b, alpha: &a)
+        // Note that non RGB color will raise an exception, that I don't now how to catch because it is an Objc exception.
+        #else
+        guard SystemColor(self).getRed(&r, green: &g, blue: &b, alpha: &a) else {
+            // Pay attention that the color should be convertible into RGB format
+            // Colors using hue, saturation and brightness won't work
+            return nil
+        }
+        #endif
+        
+        return (r, g, b, a)
+    }
+}
 
+extension Color: Codable {
+    enum CodingKeys: String, CodingKey {
+        case red, green, blue
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let r = try container.decode(Double.self, forKey: .red)
+        let g = try container.decode(Double.self, forKey: .green)
+        let b = try container.decode(Double.self, forKey: .blue)
+        
+        self.init(red: r, green: g, blue: b)
+    }
 
-//struct Task: Codable {
-//
-//
-//    var content: String
-//    var deadline: Date
-//    var color1 : UIColor
-//
-//    init(content: String, deadline: Date, color : UIColor) {
-//        self.content = content
-//        self.deadline = deadline
-//        self.color1 = color
-//    }
-//
-//    enum CodingKeys: String, CodingKey {
-//        case content
-//        case deadline
-//        case color1
-//
-//    }
-//
-//   init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: CodingKeys.self)
-//        content = try container.decode(String.self, forKey: .content)
-//        deadline = try container.decode(Date.self, forKey: .deadline)
-//        color1 = try container.decode(Colors.self, forKey: .color1).uiColor1
-//    }
-//
-//    func encode(to encoder: Encoder) throws {
-//        var container = encoder.container(keyedBy: CodingKeys.self)
-//        try container.encode(content, forKey: .content)
-//        try container.encode(deadline, forKey: .deadline)
-//        try container.encode(Colors(uiColor: color1), forKey: .color1)
-//    }
-//}
-
-//extension UIColor {
-//    var color: Color {
-//        return Color(self)
-//    }
-//}
-
-
-
+    public func encode(to encoder: Encoder) throws {
+        guard let colorComponents = self.colorComponents else {
+            return
+        }
+        
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encode(colorComponents.red, forKey: .red)
+        try container.encode(colorComponents.green, forKey: .green)
+        try container.encode(colorComponents.blue, forKey: .blue)
+    }
+}
 

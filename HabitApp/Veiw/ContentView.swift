@@ -13,8 +13,6 @@ struct ContentView: View {
     @EnvironmentObject var newList: NewList
 
     
-    
-
     var body: some View {
         NavigationView {
             ZStack (alignment: .bottomTrailing){
@@ -57,6 +55,7 @@ struct ContentView: View {
                         }
                         .onDelete { offset in
                             self.newList.listArray.remove(atOffsets: offset)
+                            newList.delete()
                         }
                         ///リスト並び替え
                         .onMove(perform: newList.rowReplace)
@@ -72,9 +71,6 @@ struct ContentView: View {
                     Image(systemName: "plus.circle.fill")
                         .scaleEffect(4)
                         .frame(width: 100, height: 100, alignment: .center)
-                        
-                        
-                    
                 }
                 .padding([.bottom, .trailing],25)
                 

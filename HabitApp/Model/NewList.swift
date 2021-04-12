@@ -11,23 +11,20 @@ import SwiftUI
 class NewList: ObservableObject {
     
     ///リストの配列
-    @Published var listArray:[ListData] = makeData()
-//    {
-//        didSet {
-//            UserDefaults.standard.setEncoded(listArray, forKey: "listArray")
-//        }
-//    }
+    @Published var listArray:[ListData] = makeData()    
+    {
+        didSet {
+            
+            UserDefaults.standard.setEncoded(listArray, forKey: "listArray")
+            
+        }
+    }
     
-//    init() {
-//        
-//        listArray = UserDefaults.standard.decodedObject([ListData].self, forKey: "listArray") ?? []
-//        
-//    }
-    ///タイトル
-    @Published var titles: [String] = []
-
-    /// サブタイトル
-    @Published var subTitles: [String] = []
+    init() {
+        
+        listArray = UserDefaults.standard.decodedObject([ListData].self, forKey: "listArray") ?? []
+        
+    }
 
     ///テキスト初期化
     @Published var newTitle = ""
@@ -75,6 +72,9 @@ class NewList: ObservableObject {
         else {
             isShow = false
         }
+    }
+    func delete() {
+        UserDefaults.standard.removeObject(forKey: "delete")
     }
 }
 
